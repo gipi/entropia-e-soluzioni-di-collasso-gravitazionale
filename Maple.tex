@@ -1,0 +1,17 @@
+\Appendix{Maple's Command}
+\def\Comandi#1{ % <--- Per scrivere comandi Maple
+{\tt #1}
+}
+
+\Comandi{Maple} \'e un programma di calcolo simbolico capace di effettuare varie operazioni matematiche tra le quali quelle pi\'u interessanti dal nostro punto di vista sono quelle possibili con il pacchetto \Comandi{tensor}; 
+\vskip 3cm
+\par
+\Comandi{lin\_com}($c_1,T_1,\dots,c_n,T_n$)$=c_1T_1+\dots+c_nT_n$\par
+\Comandi{prod}$(T,W,[T_\alpha,W_\beta],\dots)=T_\alpha W_\beta$ prodotto diretto \par
+\Comandi{antisymmetrize}$(T,[i,\dots,j])=\sum_{\sigma} sign(\sigma) T_{\dots\sigma(i)\dots\sigma(j)\dots}$\par
+\Comandi{contract}$(T,[i,j],\dots)$\par
+\Comandi{cov\_diff}$(T,coord,Cf2)=\DC{\mu}T^\nu\Vec{e}_\nu$ con $\mu$ che ``corre'' tra le varie {\tt coord }\par
+\Comandi{raise}$(g^{-1},T,i)=g^{\alpha i}T_{\dots i\dots}$\par
+\Comandi{lower}$(g,T,i)=g_{\alpha i}T^{\dots i\dots}$\par
+\Comandi{Christoffel1}$(\partial g)=[ij,k]$\par
+\Comandi{Christoffel2}$(g^{-1},Cf1)=\Gamma^{i}_{\phantom{i}jk}$\par

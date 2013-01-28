@@ -1,0 +1,447 @@
+\Chapter{Buchi Grigi}{\hfill``Nessuno capisce la meccanica quantistica''}{Richard Feynman}
+Dopo aver esposto nei capitoli precedenti la teoria classica che sta alla base del problema del collasso gravitazionale, ora ci occuperemo delle nuove aree di ricerca sviluppatesi e che collegano in alcuni casi direttamente la meccanica quantistica allo spazio curvo prevedendo (come fece [Hawk75]) che un buco nero non \`e perfettamente ``nero'', ma anzi emette particelle come un corpo nero ad una temperatura data proprio dal valore trovato da Bekenstein e gi\`a analizzato in dettaglio.\par
+Di seguito mostreremo come usando le quantit\`a conservate della teoria dei campi classica applicate alla relativit\`a generale, sia possibile prevedere il valore dell'entropia ed in particolare ricaveremo questo valore per una singolarit\`a nuda che si sviluppa in una soluzione di collasso esatta.
+%
+%
+%
+\Section{Teoria di campo su spazio curvo}
+Allo stato attuale delle cose ci sono due teorie che si contendono lo scenario della fisica moderna: la {\sl Teoria quantistica dei campi} (\vip{QFT}) e la {\sl Relativit\`a generale}\ (\vip{GR}). La seconda l'abbiamo visionata in tutto il resto della tesi (ovviamente l'argomento non si presuppone esaurito ma andrebbe oltre gli scopi di questa tesi), mentre la prima si pone come migliore teoria fisica in quanto nella sua applicazione alla \vip{elettrodinamica}\ ha portato ad un livello di precisione neanche concepibile le misure su quantit\`a fisiche.\par
+Tuttavia il tentativo di portare una teoria a contatto con l'altra causa problemi non ancora risolti: la QFT applicata alla GR non d\`a gli stessi risultati ottenuti con le teorie di Gauge (quali per esempio la teoria elettrodebole) e nella visione unitaria  delle forze mediate tramite particelle elementari (nel caso della GR si pensa sia il gravitone) questo risulta un problema. Perci\`o non riuscendo con i metodi standard della teoria dei campi a risolvere questo problema si cerca di trovare comportamenti semiclassici della gravit\`a quantistica in maniera da sapere almeno come i modelli si debbano comportare in tale limite: in questa parte riporteremo i risultati che si ottengono applicando la teoria dei campi su background curvo non tenendo conto della contro-reazione della metrica  ispirandoci all'articolo di \Biblio{Unruh76}{W.\ G.\ Unruh}{Notes on black-hole evaporation}{Phys.\ Rev.\ D 14,870(1976)}.
+%
+%
+%
+\eject
+\SottoSezione{Particelle di Rindler}
+In maniera analoga al formalismo della teoria dei campi classica, nella teoria quan\-ti\-sti\-ca si parte considerando una lagrangiana  ma con la differenza di considerare i campi come operatori; la parte quadratica nel campo rappresenta il cosidetto \vip{propagatore}, cio\`e l'ampiezza di probabilit\`a di ``propagazione'' di una particella da un punto all'altro dello spazio tempo, mentre gli altri termini sono visti come \vip{vertici di interazione}\ con altri campi o con il campo stesso. Noi tratteremo solamente il  caso di particelle scalari neutre originate dalla  cosidetta lagrangiana di \vip{Klein-Gordon} senza massa e senza termine di interazione (detta quindi teoria libera)\Foot{Per approfondimenti si veda per esempio \Biblio{BjDr65}{J.\ D.\ Bjorken, S.\ D.\ Drell}{Relativistic Quantum Fields}{New York: McGraw-Hill}.}
+$$
+L_{KG}=\sqrt{|g|}\phi\Box_{\scriptscriptstyle\MM}\phi
+$$
+dove $\phi$ \`e il campo, $\Box_{\scriptscriptstyle\MM}$ \`e il dalambertiano. In maniera analoga a quanto detto nella sezione sul calcolo variazionale, le soluzioni si ottengono applicando la \Eulero\ a\ $L_{KG}$ e ottenendo perci\`o
+$$
+\Box\phi=0
+$$
+Le soluzioni vengono scelte in maniera tale che siano autofunzioni dell'operatore impulso $\hat P^\mu=-i\partial^\mu$ \Help{Spazio di Fock e operatori vari}
+$$
+\chi_k=e^{-i(\omega t-\vec k\cdot\vec x)}\to
+\left\{\eqalign{
+&\hat P^0\chi_k=i\partial_t\chi_k=\omega\chi_k\cr
+&\hat P^a\chi_k=-i\partial_a\chi_{\vec k}=k^a\chi_{\vec k}
+}\right.
+$$
+dove $\omega=|\vec k|$.
+A questo punto una soluzione generica si potr\`a  scrivere grazie alla trasformata di Fourier come\Foot{Si scompone cos\'\i\ per avere il campo reale.}
+$$
+\phi(\vec x)=\int_k d\vec k\,\left(a_k\chi_k(x)+a^*_k\chi^*_k(x)\right)
+$$
+dove $\vec{x}=(x,y,z)$ e $\vec k=(k_x,k_y,k_z)$ . La normalizzazione viene scelta tramite il seguente prodotto interno non dipendente dal tempo
+$$
+(\phi_1,\phi_2)=-i\int d\vec x\,\left(\phi_1(\partial_t\phi^*_2)+(\partial_t\phi_1)\phi^*\right)
+$$\par
+Ora imponendo delle condizioni di commutazione fra $\phi$ e $\dot\phi$ \`e possibile promuovere $a_k$ e $a^*_k$ ad operatori ed  imporre la relazione di commutazione bosonica
+$$
+\left[a_{\vec k},a^+_{\vec{k^\prime}}\right]=\delta^3(\vec k-\vec k^\prime)
+$$
+ed interpretare l'operatore $a^+_{\vec{k}}$ come {\sl operatore di creazione di una particella} con valore $\vec k$ di impulso avendo definito in precedenza lo stato di vuoto $|0>$ come quello nilpotente sotto l'azione di $a_{\vec k}$
+$$
+\eqalign{
+&a_{\vec k}|0>=0\cr
+&a^+_k|0>=|1_k>
+}
+$$
+Il contenuto di particelle \`e misurato dall'operatore \vip{numero d'occupazione}:
+$$
+\hat N_k=a^+_ka_k
+$$
+\par
+Cambiamo ``punto di vista''\Help{Grandezze in Rindler barrate} e parliamo di un oggetto che subisce una ac\-ce\-le\-ra\-zio\-ne propria $a$ costante lungo la direzione $x$ e limitiamo il nostro studio al problema bidimensionale nel piano $(t,x)$, la traiettoria in Minkowski sar\`a data da una curva del tipo
+$$
+x^\mu\left(\bar t\right)=\left({1\over a}\sinh\left(a\bar t\right),{1\over a}\cosh(a\bar t)\right)
+$$
+Nel sistema di coordinate di questo corpo\Foot{Le grandezze riferite a queso sistema saranno barrate rispetto a quelle in Minkowski.}, i punti nel suo spazio tridimensionale saranno descritti da curve del tipo $(\bar t,\hbox{Costante})$ e quindi effettuiamo con questo spirito la trasformazione
+$$
+\left\{
+\eqalign{
+&t={1\over g}e^{g\bar x}\sinh(g\bar t)\cr
+&x={1\over g}e^{g\bar x}\cosh(g\bar t)
+}
+\right.\Eqno
+$$\COUNT{CoordRindlerI}
+\Figura{Rindler}{5cm}{5cm}{Diagramma conforme per lo spazio di Rindler.}\noindent
+che tuttavia copre solo una regione di Minkowski caratterizzata da $x>0$ e $x>|t|$ che chiameremo in seguito \vip{regione di Rindler} che in figura \`e indicato con $I$: la caratteristica di queste coordinate \`e che un corpo ad una coordinata $\bar x$ costante sente una accelerazione propria data da $a=g\,e^{g\bar x}$ (e di conseguenza costante); la trasformazione \`e stata scelta in maniera tale da rendere la metrica conforme a quella piatta:
+$$
+g=e^{g\bar x}(-\Tensor{d\bar t}+\Tensor{d\bar x})\Eqno
+$$\COUNT{MetricaRindler}
+Prima di proseguire notiamo che le coordinate nulle definite come
+$$
+\left\{\eqalign{
+&u=t-x=-{1\over g}e^{-g\bar u}\cr
+&v=t+x={1\over g}e^{g\bar v}\cr
+}\right.
+$$
+hanno la caratteristica di essere costanti rispettivamente su onde uscenti ed entranti dove in Minkowski sono definite per $-\infty<u,v<\infty$, mentre in Rindler solo per $\bar v>0$ e $\bar u<0$.\par
+Ritorniamo alla \MetricaRindler: Sfruttando l'invarianza del dalambertiano per tra\-sfor\-ma\-zio\-ni conformi possiamo dire che le soluzioni dell'equazione d'onda rimangono invariate funzionalmente in queste coordinate (ovvia\-mente sono limitate nella regione $I$); poniamoci nel sistema delle coordinate ``nulle''$(u,v)$ tramite cui le soluzioni nella zona di Rindler possono essere espresse come
+\def\ChiR#1{{\buildrel{\textstyle#1}\over{\scriptstyle\to}}}
+\def\ChiL#1{\buildrel{\textstyle#1}\over{\scriptstyle\gets}}
+$$
+\cases{\ChiR{\chi}_\omega^I=\theta(-u)e^{-i\omega\bar u}& $\triangleleft$ Soluzione Outgoing ($k>0$)\cr
+\ChiL{\chi}_\omega^I=\theta(v)e^{-i\omega\bar v}& $\triangleleft$ Soluzioni Ingoing ($k<0$)
+}
+$$
+Si possono completare le coordinate di Rindler in maniera tale da  poter descrivere lo spazio di Minkowski nella sua interezza: si prendono le coordinate \CoordRindlerI\ si scambiano gli assi $(t,x)$ rispetto all'origine e si ottiene la descrizione della cosidetta zona $II$ definita per $u>0$ e $v<0$; anche qui le soluzioni hanno la stessa forma funzionale tranne per il loro campo di definizione:
+$$
+\cases{\ChiR{\chi}_\omega^{II}=\theta(u)e^{i\omega\bar u}& $\triangleleft$ Soluzione Outgoing ($k>0$)\cr
+\ChiL{\chi}_\omega^{II}=\theta(-v)e^{i\omega\bar v}& $\triangleleft$ Soluzioni Ingoing ($k<0$)
+}
+$$
+Solo una combinazione lineare dei modi della zona $I$ e $II$ assieme permette una descrizione fisica completa come nel caso nello spazio piatto; perci\`o una soluzione generale deve essere
+$$
+\eqalign{
+\phi(u,v)&=\int d\omega\,\left(\ChiR{a}_\omega\ChiR{\chi}_\omega+\ChiL{a}_\omega\ChiL{\chi}_\omega+\hbox{h.c.}\right)\cr
+&=\int d\bar\omega\left(\ChiR{\bar b}^{I}_{\bar\omega}\ChiR{\bar\chi}^{I}_{\bar\omega}+\ChiL{\bar b}^{I}_{\bar\omega}\ChiL{\bar\chi}^{I}_{\bar\omega}+\ChiR{\bar b}^{II}_{\bar\omega}\ChiR{\bar\chi}^{II}_{\bar\omega}+\ChiL{\bar b}^{II}_{\bar \omega}\ChiL{\bar\chi}^{II}_{\bar\omega}\hbox{h.c.}\right)\cr
+}
+$$
+per cui ci deve essere una ``mescolanza'' di modi data dai coefficienti
+$$
+\eqalign{
+\ChiR{\alpha}^I_{\bar\omega\omega}&=\int du\ChiR{\bar\chi}_{\bar\omega}^{*I}\ChiR{\chi}_\omega\cr
+&={1\over2\pi a}\sqrt{\bar\omega\over\omega}e^{\pi\bar\omega/2a}\left(a\over\omega\right)^{-i\bar\omega/a}\Gamma\left(-i\bar\omega\over a\right)
+}
+$$
+
+$$
+\eqalign{
+\ChiR{\beta}^I_{\bar\omega\omega}&=\int du\,\ChiR{\bar\chi}^I_{\bar\omega}\ChiR{\chi}_{\omega}\cr
+&={1\over2\pi a}\sqrt{\bar\omega\over\omega}e^{-\pi\bar\omega/2a}\left(a\over\omega\right)^{i\bar\omega/a}\Gamma\left(i\bar\omega\over a\right)
+}
+$$
+tali che i coefficienti $\ChiR{b}$ siano scrivibili come
+$$
+\ChiR{b}^I_{\bar\omega}=\int^\infty_0 d\omega\,\ChiR{\alpha}^I_{\bar\omega\omega}\ChiR{a}_{\omega}+\ChiR{\beta}^I_{\bar\omega\omega}\ChiR{a}^+_{\omega}
+$$
+Tutto questo \`e interpretabile come una modifica del concetto di vuoto fra i due osservatori in quanto adesso i due stati di vuoto sono tali che 
+$$
+\ChiR{b}^I_{\bar\omega} |\bar 0\rangle=0\quad\hbox{ma}\quad\ChiR{b}^I_{\bar\omega}\left. |0\right>\neq0
+$$
+infatti l'operatore numero in Rindler ha un valore di aspettazione nel vuoto di Minkowski pari a
+$$
+\eqalign{
+\langle0|\ChiR{b}^{+I}_{\bar\omega}\ChiR{b}^I_{\bar\omega}|0\rangle&=\int^\infty_0\ChiR{\beta}^I_{\bar\omega\omega}\ChiR{\beta}^I_{\bar\omega\omega}\cr
+&={\delta(\omega-\bar\omega)\over e^{2\pi\bar\omega/a}-1}
+}
+$$
+che corrisponde ad una distribuzione statistica di particelle bosoniche ad una tem\-pe\-ra\-tu\-ra di \Help{Tolman}
+$$
+\bar T={a\over 2\pi}
+$$
+Per eventuali approfondimenti, consiglio la lettura di \Biblio{Vall98}{M.\ Vallisneri}{Mutamenti nella nozione di vuoto}{Tesi di laurea, Universit\`a di Parma} oppure \Biblio{Ante02}{M.\ Antezza}{L'effetto Unruh}{Tesi di laurea, Universit\`a di Pavia} e le referenze citate al loro interno; in particolare si pu\`o  dimostrare che un possibile detector accelerato {\sl alla Rindler} nella sua interazione con il vuoto assorbe proprio particelle e che questo sia possibile in quanto il generatore infinitesimo dell'ac\-ce\-le\-ra\-zio\-ne costante \`e proprio il vettore di Killing generato dai boost di Lorentz.\par
+Cerchiamo di applicare quanto detto per ricavare qualcosa di interessante dal punto di vista fisico: il motivo per cui Unruh studi\`o la metrica di Rindler, sta nel fatto che essa  \`e in rapporto con la metrica di Minkowski nella stessa maniera in cui le coordinate di Kruskal sono in rapporto con quelle di \Sch; infatti in queste coordinate la metrica diventa conforme a quella piatta:
+$$
+g=\left(1-{2M\over r}\right)\left(-\Tensor{dt}+\Tensor{dr_\ast}\right)
+$$
+ed \`e possibile rifare tutto l'identico discorso eseguendo lo scambio di $g$ del caso precedente con ${1\over 4M}$ che \`e la gravit\`a superficiale del buco nero oltre che l'accelerazione propria di particelle che seguono traiettorie di Kruskal, trovando che un osservatore ad un raggio fisso fuori da un buco nero di \Sch\ osserva un bagno termico di particelle ad una temperatura data da 
+$$
+T=\left(1-{2M\over r}\right)^{-1/2}{1\over8\pi Mk_B}
+$$
+che all'infinito spaziale diventa la cosidetta temperatura di Hawking
+$$
+T_H={1\over8\pi Mk_B}
+$$
+\`E solo una analogia matematica? L'interpretazione in questo caso sta nel fatto che le coordinate di Kruskal sono ``naturali'' nel senso che a parte fattori costanti della metrica descrivono osservatori in caduta libera che a causa del principio di equivalenza dovrebbero non distinguere il loro sistema da uno inerziale che a  livello quantistico ha un vuoto ben definito, mentre osservatori fermi ad un raggio fissato fuori da un buco nero di \Sch\ interpretano il vuoto dell'osservatore precedente come un bagno termico di particelle secondo una temperatura inversamente proporzionale alla massa del corpo ``attrattore''.\par
+Cosa porta  questa ``scoperta''? Prima di tutto i buchi neri non sono cos\'\i\ neri, ma anzi emettono particelle di qualunque tipo: 
+\Item{Fermioni:} Effettuando i calcoli per loro si ottiene la giusta statistica di Fermi-Dirac
+\Item{Campi Massivi:} Stesso discorso tranne che l'emissione \' e molto debole nel caso che la massa a riposo sia maggiore della temperatura di Hawking\Foot{Ovviamente nell'unit\`a naturali in cui $k_B=1$ }.
+\Item{Buchi Neri Rotanti:} Nel caso sia presente sia momento angolare che carica elettrica nel corpo stellare, allora l'ampiezza di emissione di particelle di energia $\omega$, carica $e$ e momento angolare $m$ nella direzione di rotazione del buco nero di momento angolare $\Omega$ e potenziale eletricio $\Phi$ diventa
+$$
+\left(e^{2\pi(\omega-m\Omega-e\Phi)/T_h}\pm1\right)^{-1}
+$$
+\par
+Le conseguenze fisiche di questi fenomeni sono:
+\Item{Evaporazione:} Per la conservazione dell'energia, il flusso di radiazione si porta via un quantitativo di massa-energia che a causa della forma funzionale {\sl aumenta} al diminuire della massa del corpo, in pratica in un tempo
+$$
+\tau={c^3\over 3}\left(M{dE\over dt}\right)^{-1}=1.61\cdot 10^{67}\left(M\over M_\odot\right)^3
+$$
+esso dovrebbe scomparire del tutto; tuttavia vista l'esiguit\`a dell'effetto solo buchi neri molto piccoli (formati per fluttuazioni quantistiche) oppure presenti alla nascita dell'universo potrebbero raggiungere questo stadio. Tuttavia rimane il problema di concetto di dove vada a finire la materia ed in particolare, l'entropia eventualmente ``caduta'' all'interno dove finisce?
+%
+%
+%
+\SottoSezione{Path Integral}
+Un altra metodologia di applicazione della teoria dei campi consiste nella formulazione con gli \vip{integrali di cammino}: prendiamo la metrica di \Sch
+$$
+g=-\left(\Rs\right)\Tensor{dt}+{1\over \Rs}\Tensor{dr}+r^2\left(\Tensor{d\theta}+\sin^2\theta\Tensor{d\phi}\right)
+$$
+ed effettuiamo una trsformazione sul tempo in maniera tale da renderlo immaginario:
+$$
+t=i\tau
+$$
+ed ottenere una metrica euclidea
+$$
+\left(\Rs\right)\Tensor{d\tau}+{1\over\Rs}\Tensor{dr}+r^2\left(\Tensor{d\theta}+\sin^2\theta\Tensor{d\phi}\right)
+$$ 
+Adesso consideriamo una trasformazione di coordinate del tipo
+$$
+R=4M\left(\Rs\right)
+$$
+in modo da ottenere\Foot{Adesso $r$ \`e una funzione implicita di $R$.}
+$$
+g=\left(r\over2M\right)^4\Tensor{dR}+R^2\left(1\over4M\right)\Tensor{dr}+r^2\left(\Tensor{d\theta}+\sin^2\theta\Tensor{d\phi}\right)
+$$
+Analizzando questa metrica nelle vicinanze dell'\Oe (qui coincide con $R=0$) si nota che \`e singolare a meno di non considerare la coordinata $\tau$ essere periodica con periodo $8\pi M$, proprio come se fosse l'origine di un sistema di coordinate polari.\par
+Questo \`e analogo al caso della teoria dei campi: l'ampiezza di transizione fra una configurazione del campo $\phi_1$ al tempo $t_1$ ad una $\phi_2$ al successivo tempo $t_2$ \`e data da
+$$
+\langle\phi_2,t_2|\phi_1,t_1\rangle=\int{\cal D}[\phi]e^{iI[\phi]}
+$$
+dove $I[\phi]$ \`e l'azione classica e l'integrazione viene effettuata su tutte le cosidette ``storie'' che possono assumere i campi fra le configurazioni $\phi_1$ e $\phi_2$ nei rispettivi tempi. Tuttavia si pu\`o ricavare la stessa cosa con 
+$$
+\langle\phi_2,t_2|\phi_1,t_1\rangle=\langle\phi_2,t_1|e^{-iH(t_2-t_1)}|\phi_1,t_1\rangle
+$$
+dove $H$ \`e l'Hamiltoniana della teoria. Qusto integrale si pu\`o trasformare in qualcosa di pi\'u utile ponendo $t_2-t_1=i\beta$ e ponendo $\phi_1=\phi_2$. Ora sommando sui $\phi$ si ottiene:
+$$
+Z=\hbox{Tr}\,e^{\beta H}=\int{\cal D}^\prime[\phi]e^{iI[\phi]}
+$$
+che \`e conosciuta nella meccanica statistica sotto il nome di \vip{funzione di partizione}\ da cui \`e possibile ricavarsi le altre grandezze termodinamiche.\par
+Cio\`e in meccanica statistica un sistema in equilibrio termico ad una temperatura $T$ pu\`o essere descritto in termini della funzione di partizione $Z$ valutata in stati periodici rispetto ad un tempo immaginario di periodo $\beta={1/k T}$; analogamente la metrica di \Sch, grazie a questa analogia, pu\`o considerarsi descrivere un sistema all'equilibrio ad una temperatura data da
+$$
+T=\beta^{-1}={1\over8\pi M}
+$$
+concidente con la temperatura della radiazione di Hawking calcolata in maniera totalmente differente
+%
+%
+%
+\SottoSezione{RedShift Geodetico}
+Riportiamo in questa parte la derivazione originale di Hawking della radiazione che porta il suo nome: prendiamo un corpo che si trovi a collassare e a raggiungere il suo \Oe, volendo risolvere l'equazione delle onde all'esterno di questo corpo, cio\`e $\Box\phi={1\over g}\partial_\mu\left[g^{\mu\nu}\sqrt{-g}\partial_\nu\phi\right]=0$ risulta comodo riscriverla  in coordinate \Sch
+$$
+{1\over r-2M}\left[-\partial^2_t+\partial_{r_\ast}^2+\left(1-{2M\over r}\right)\left({2M\over r^3}-{L^2\over r^2}\right)\right](r\phi)=0
+$$
+Prendendo $\phi(t,r)=\chi(t,r)Y_{lm}(\theta,\phi)$, dove le $Y_{lm}(\theta,\phi)$ rappresentano le autofunzioni del momento angolare, si ottiene che al limite per $r\to 2M$ ed $r\to+\infty$ le soluzioni sono rappresentate dalle funzioni
+$$
+\cases{
+\chi^{(in)}_\omega\sim e^{-i\omega(t+r_\ast)}&su ${\cal J}^-$\cr
+\chi^{({\scriptscriptstyle\cal H}_+)}_\omega\sim e^{-i\omega(t-r_\ast)}&su ${\cal H}_+$\cr
+\chi^{(out)}_\omega\sim e^{-i\omega(t-r_\ast)}&su ${\cal J}^+$
+}
+$$
+\Figura{Hawking}{6cm}{8cm}{Diagramma conforme relativo alla radiazione di Hawking.}
+A questo punto chiamiamo $\gamma_{\scriptscriptstyle\cal H}(\lambda)$ la geodetica nulla che genera l'\Oe\ ed estendiamola nel passato fino a raggiungere ${\cal J}^-$ (poniamo $v=0$ all'in\-ter\-se\-zio\-ne); un osservatore su ${\cal J}^+$ osserver\`a una dipendenza della fase dell'onda dal suo tempo proprio dato dalla
+$$
+\phi(\lambda)=\omega u(U(\lambda))=-{\omega\over\kappa}\log(-U(\lambda))
+$$
+dove $U(\lambda)$ \`e la geodetica dell'osservatore e $\lambda$ il suo paramtero affine.
+\par
+Poniamo $\lambda=0$ su \Oriz e lineariziamo intorno ad esso supponendo
+$$
+U(\lambda)\sim\left(dU\over d\lambda\right)_{\lambda=0}\lambda=\alpha\lambda
+$$
+con $\alpha\neq0$. Introduciamo un vettore di deviazione geodetica $\eta$ fra la geodetica nulla generante l'orizzonte e le generatrici delle superfici a fase costante dell'onda in esame, scegliendo la sua direzione su ${\cal J}^-$ essere parallela a $\partial_v$; vicino a $v=0$ la dipendenza della coordinata uscente rispetto a quella entrante risulta essere
+$$
+u(v)\sim\cases{
+0 & $v>0$\cr
+e^{i\omega/\kappa\log(-\alpha v)}& $v<0$
+}
+$$
+Calcolando come lo stato di vuoto ``in'' si proietta sullo stato ``out'' si ottiene che il primo \`e visto dal secondo come un bagno termico di particelle ad una temperatura pari a quella di Hawking trovata precedentemente.
+%
+%
+%
+\Section{Calore gravitazionale}
+Mentre una generazione di scienziati cercava di calcolare l'entropia a livello quantistico, altri cercarono nello spirito della relativit\`a generale, di trovarla come propriet\`a geometrica dello \ST\ e dell'orizzonte (per i contributi pi\'u essenziali vedasi \Biblio{IyWa94}{V.\ Iyer R.\ Wald}{Some properties of the N\"other charge and proposal for dynamical black hole entropy}{Phys.\ Rev.\ D\ 50, 846(1994)}\ e \Biblio{FaFeFrRa}{L.\ Fatibene M.\ Ferraris M.\ Francaviglia M.\ Raiteri}{Remarks on N\"other charge and black hole entropy}{hep-th/9810039}).\par
+Come abbiamo visto, il superpotenziale della relativit\`a generale restituiva solo met\`a del valore atteso per la massa contenuta nella soluzione di \Sch\ e questo era chiamato {\sl fattore anomalo}; nel tentativo di correggere questo ``coefficiente'', si \`e arrivati ad aggiungere una metrica di {\sl background}: abbiamo visto che la grandezza \NonCov, generatrice delle equazioni di Einstein aveva il difetto di essere non definita globalmente a causa del fatto che era funzionalmente composta dai coefficienti delle connessioni che non sono tensori, per ovviare a questo difetto \`e possibile aggiungere una nuova metrica con le grandezze derivate da essa, interpretabile come con\-fi\-gu\-ra\-zio\-ne di campo rispetto cui calcolare le grandezze stesse. Spieghiamoci meglio: nelle altre teorie di campo fisiche, per esempio l'elettromagnetismo, esiste la configurazione di campo detta di {\sl vuoto} cio\`e dove in pratica il campo \`e nullo ed \`e dovuto al fatto che la teoria \`e costruita su un fibrato vettoriale su cui esiste lo zero; la teoria di Einstein invece ha come campo un oggetto geometrico che non ha una configurazione di vuoto (in teoria la configurazione di ``vuoto'' dovrebbe essere la $\etaM$, in caso di costante cosmologica \Mink\ non \`e neanche soluzione), dunque \`e possibile interpretare le quantit\`a conservate usando questa metrica ``di sfondo'' come {\sl zero di riferimento} della teoria.\par
+A questo punto usando come grandezze le seguenti
+$$
+\cases{
+g_{\mu\nu}&$\triangleleft$ Metrica\cr
+\GC{\mu}{\alpha}{\beta}&$\triangleleft$ Connessione\cr
+\Mat{R}{\alpha}{\mu\beta\nu}&$\triangleleft$ Curvatura\cr
+R_{\mu\nu}=\Mat{R}{\alpha}{\mu\alpha\nu}&$\triangleleft$Tensore di Ricci \cr
+R=g^{\mu\nu}R_{\mu\nu}&$\triangleleft$ Scalare di Ricci\cr
+\Mat{u}{\mu}{\alpha\beta}=\GC{\mu}{\alpha}{\beta}-\Mat{\delta}{\mu}{(\alpha}\GC{\sigma}{\beta)}{\sigma}& 
+}
+$$
+e introducendo le seguenti quantit\`a relative
+$$\eqalign{
+&\Mat{q}{\mu}{\alpha\beta}=\GC{\mu}{\alpha}{\beta}-\overline\GC{\mu}{\alpha}{\beta}\cr
+&\Mat{w}{\mu}{\alpha\beta}=\Mat{u}{\mu}{\alpha\beta}-\Mat{\overline u}{\mu}{\alpha\beta}
+}
+$$
+(dove con le rispettive grandezze barrate abbiamo indicato le grandezze di ``back\-ground'') \`e possibile riscrivere la lagrangiana di Hilbert tramite
+$$
+\eqalign{
+L_H&=\sqrt{-g}R\,d\mu\cr
+&=\left[\sqrt{-g}g^{\alpha\beta}(\GC{\mu}{\alpha}{\sigma}\GC{\sigma}{\beta}{\mu}-\GC{\sigma}{\alpha}{\beta}\GC{\mu}{\sigma}{\mu})+d_\sigma\left({1\over2\kappa}\sqrt{-g}g^{\alpha\beta}\Mat{u}{\sigma}{\alpha\beta}\right)\right]\,d\mu\cr
+&=\left[\sqrt{-g}g^{\alpha\beta}(\overline{R}_{\alpha\beta}+\Mat{q}{\mu}{\alpha\sigma}\Mat{q}{\sigma}{\beta\mu}-\Mat{q}{\sigma}{\alpha\beta}\Mat{q}{\mu}{\sigma\mu})+d_\sigma\left({1\over2\kappa}\sqrt{-g}g^{\alpha\beta}\Mat{w}{\sigma}{\alpha\beta}\right)\right]\,d\mu
+}
+$$ 
+In tale maniera, grazie al campo di background, \`e possibile scrivere in maniera covariante una lagrangiana di campo per la Relativita Generale che sia del primo ordine, ma il campo $\overline g$ rimane indeterminato a livello dinamico, quindi sottraiamo alla lagrangiana appena trovata un cosidetto ``termine cinetico'' $\sqrt{-\overline g}\,\overline R\,d\mu$ e ricombinando otteniamo
+$$
+L_{1}={1\over2\kappa}\left[\overline R\left(\sqrt{-g}-\sqrt{-\overline g}\right)+\sqrt{-g}g^{\alpha\beta}(\Mat{q}{\mu}{\alpha\sigma}\Mat{q}{\sigma}{\beta\mu}-\Mat{q}{\sigma}{\alpha\beta}\Mat{q}{\mu}{\sigma\mu})\right]
+$$
+I calcoli relativi ai superpotenziali restituiscono
+$$
+\eqalign{
+{\cal U}(L_1,\xi)&=U_{Kom}(\xi)+U_{Adm}(\xi)+U_0(\xi)\cr
+&={1\over2\kappa}\left[\sqrt{-g}\nabla^{[\alpha}\xi^{\beta]}+\sqrt{-g}\,g^{\mu\nu}\Mat{w}{[\beta}{\mu\nu}\xi^{\alpha]}-\sqrt{-\overline g}\,\smash{\overline\nabla}\vphantom{\nabla}^{[\alpha}\xi^{\beta]}\right]\,d\mu_{\alpha\beta}
+}
+$$
+che permette di calcolare le quantit\`a conservate su un dominio bidimensionale $\partial D$ ottenendo
+$$
+Q_1=Q_H+\int_{\partial D}\sqrt{-g}\,g^{\mu\nu}\Mat{w}{[\beta}{\mu\nu}\xi^{\alpha]}\,d\mu_{\alpha\beta}-Q_0
+$$
+dove\bigskip
+\Item{$Q_H$:} \`E la quantit\`a conservata gi\`a trovata con il problema del fattore anomalo di Komar.
+\Item{$\int\xi w$:} \`E il cosidetto termine di {\sl correzione di bordo}\ trovato nel formalismo {\vip ADM}.
+\Item{$Q_0$:} \`E il valore della grandezza per la metrica di BackGround scelta
+\bigskip\noindent
+Come \`e importante notare, questi integrali sono covarianti e dunque si hanno quantit\`a indipendenti dalle coordinate esplicite scelte per un calcolo; inoltre importantissima \`e la propriet\`a che le forme originate dalla variazione rispetto alle ``soluzioni linearizzate'' sono forme chiuse, cio\`e:
+$$
+d\left[\delta_X\left(U_{Kom}+U_{Adm}\right)\right]=0
+$$
+dove $X$ \`e una soluzione linearizzata e non vengono considerate variazioni rispetto alla metrica di background. Volendo applicare questa formula ad un caso gi\`a analizzato, prendiamo la metrica di Kerr di cui conosciamo l'espressione dei superpotenziali e delle relative quantit\`a conservate rispetto al vettore $\xi=\partial_t+\Omega_H\partial_\phi$:
+$$
+\eqalign{
+&{\cal E}=\int_{S_r}U_{Kom}(\partial_t)+U_{Adm}(\partial_t)=M\cr
+&{\cal J}=-\int_{S_r}U_{Kom}(\partial_\phi)+U_{Adm}(\partial_\phi)=aM\cr
+}
+$$
+dove abbiamo scelto come metrica di background 
+$$
+\overline g=-\Tensor{dt}+{\rho^2\over r^2+a^2}\Tensor{dr}+\rho^2\Tensor{d\theta}+(r^2+a^2)\sin^2\theta\Tensor{d\phi}
+$$
+dove
+$$
+\Delta=r^2-2Mr+a^2\quad\rho^2=r^2+a^2\cos^2\theta
+$$
+e le integrazioni avvengono su sfere di raggio $r>r_+$; occupiamoci delle loro variazioni scegliendo due particolari superfici:
+\bigskip
+\Item{$r\to+\infty$}\ Superficie rispetto a cui sono calcolate le grandezze conservate.
+\Item{$r\to r_+$}\ Superficie corrispondente all'orizzonte, dove il vettore di Killing $\xi$ si annulla e la gravit\`a superficiale $\kappa$ \`e costante.
+\bigskip\noindent
+Cerchiamo di ricavare l'entropia che abbiamo visto essere legata alla superficie (diviso quattro) dell'\Oe: per quello che abbiamo detto precedentemente si ha
+$$
+\delta_X\int_{\hbox{\Oriz}}U_{Kom}(\xi)=\delta_X\int_\infty U_{Kom}(\xi)+U_{Adm}(\xi)
+$$
+cerchiamo se esiste una ``superpotenziale'' definito su \Oriz\ che restituisca il valore da noi cercato
+$$
+\eqalign{
+\delta_X S&={2\pi\over \kappa}\delta_X\left\{\int_\infty U_{Kom}(\xi)+U_{Adm}(\xi)\right\}\cr
+&={4\pi Mr_+\over(M^2-a^2)^{1/2}}\left\{\delta_X M-{a\over r^2_++a^2}\left[M\delta_X a+a\delta_X M\right]\right\}\cr
+&=2\pi\left\{\left[{M\over(M^2-a^2)^{1/2}}-1\right]\delta_X M-{aM\over(M^2-a^2)^{1/2}}\delta_X a\right\}\cr
+&=\delta_X \left(2\pi Mr_+\right)
+}
+$$
+In questa maniera abbiamo una formulazione pi\'u generale del primo principio della termodinamica dei buchi neri
+$$
+\delta_X{\cal E}=T\delta_X S+\Omega_H\delta_X {\cal J}+e\delta_X{\cal Q}
+$$
+applicato al caso pi\'u generale di una metrica di Kerr-Newman, dove ${\cal E}$, ${\cal J}$ e ${\cal Q}$ sono calcolate all'infinito, mentre $T\delta_X S$ \`e calcolato su \Oriz.
+%
+%
+%
+\eject
+\SottoSezione{Collasso Autosimilare}
+Forti di questa tecnica di calcolo per l'entropia, cerchiamo di estendere lo studio di questa grandezza ad oggetti generali in Relativit\`a: le singolarit\`a nude. Prendiamo spunto per il nostro studio da soluzioni di collasso gravitazionale di polveri (perci\`o a pressione nulla) nel caso il sistema oltre ad essere a simmetria sferica, possegga anche un vettore di Killing Omotetico
+$$
+\xi_{SS}=t\partial_t+r\partial_r
+$$
+per cui la funzione massa risulta avere un espressione $2GM(r)=\lambda r$. L'espressione della metrica in coordinate comoventi con le polveri risulta essere 
+$$
+g=-\Tensor{d\tau}+\hat R^{\prime2}(t,r)\Tensor{dr}+\hat R^2(t,r)\left(\Tensor{d\theta}+\sin^2\theta\Tensor{d\phi}\right)
+$$
+dove 
+$$
+\hat R(t,r)=r\left[1-{3\sqrt{\lambda}\tau\over2r}\right]^{2/3}
+$$
+\`e il ``raggio fisico\Foot{$\hat R^\prime(\tau,r)={\partial\hat R(\tau,r)\over\partial r}$}'', mentre $r$ \`e la coordinata che etichetta i gusci di materia\Foot{Le condizioni iniziali sono state scelte in maniera tale che $\hat R(0,r)=r$.}; affinch\'e non si formi un buco nero a $t=0$ si deve avere $2GM(r_0)<r_0$, cio\`e
+$$
+\lambda<1
+$$
+condizione verificata per un intervallo di tempo dato da 
+$$
+\Delta\tau=(1-\lambda^{3/2}){2r_0\over3\sqrt{\lambda}}
+$$
+\Figura{collapse}{5cm}{7cm}{Diagramma temporale del collasso self-similare .}
+Ma come si comporta la metrica in questo intervallo? La funzione radiale e la sua derivata diventano singolari lungo le curve
+$$
+\tau(r)={2r\over3\sqrt{\lambda}}
+$$
+per cui a $\tau=0$ il primo guscio sferico (etichettato da $r=0$) causa una cosidetta {\sl shell-focusing}, una singolarit\`a in particolare nuda ed esposta agli osservatori esterni. \par
+Consideriamo le geodetiche nulle puramente radiali  aventi perci\`o la seguente relazione
+$$
+-1+\hat R^{\prime2}(\tau,r)\left(dr\over d\tau\right)^2=0
+$$
+introduciamo le variabili 
+$$
+x={\tau\over r}
+$$
+ e notiamo che $\hat R^\prime(\tau,r)=\hat R^\prime(x)$ per cui per la relazione sopra scritta si hanno due famiglie di geodetiche definite implicitamente dalle seguenti relazioni\Foot{La loro forma \`e stata scelta in maniera tale da riprodurre le coordinate nulle in \Mink\ nel caso $\lambda\to0$.}
+$$
+\eqalign{
+&u=\cases{
+	r\,e^{I_-}&$x-\hat R^\prime>0$\cr
+	-r\,e^{I_-}&$x-\hat R^\prime<0$
+	}\cr
+&v=\cases{
+	r\,e^{I_+}&$x+\hat R^\prime>0$\cr
+	-r\,e^{I_+}&$x+\hat R^\prime<0$
+	}
+}
+$$
+dove
+$$
+I_{\pm}(x)=\int{dx\over x\pm\hat R^\prime}.
+$$
+\par
+Ponendo $y=\sqrt{\hat R/r}$ si pu\`o riscrivere l'integrale di definizione di $I_\pm$ tramite un polinomio di quarto grado
+$$
+\eqalign{
+I_\pm(y)&=9\int dy{y^3\over f^\pm(y)}\cr
+&=3\int dy\left[\sum_{i=1}^4{A^\pm_i\over y-\alpha_i^\pm}\right]
+}\Eqno
+$$\COUNT{IPM}
+dove con $\alpha_i^\pm$ si sono indicate le radici del polinomio che esplicitato risulta essere
+$$
+f^\pm(y)=3y^4\mp ay^3-3y\mp2a
+$$
+e dove si \`e posto
+$$
+A^\pm_i={\alpha^{\pm3}_i\over f^{\pm\prime}(\alpha^{\pm}_i)}\qquad\hbox{e}\quad\sum_{i=1}^4A^\pm_i=1
+$$
+La singolarit\`a si forma nell'origine delle coordinate a $\tau=0$, corrispondente alla coppia di coordinate nulle $(u=0,v=0)$;  affinch\`e una geodetica nulla possa ``colpire'' questo punto ed arrivare a ${\cal J}^+$ vi \`e la necessit\`a che le funzioni
+$$
+\left\{\eqalign{
+&u(y)=\pm r \prod^4_{i=1}|y-\alpha^-_i|^{3A_i^-}\cr
+&v(y)=\pm r\prod^4_{i=1}|y-\alpha^+_i|^{3A_i^+}\cr
+}\right.
+$$
+ovviamente vadano a zero: dallo sviluppo di queste due funzioni intorno a questo zero e dalla condizione di raccordo fra la metrica solidale alle polveri e la metrica esterna rappresentata da \Sch,
+$$
+-1=-\left[1-{2M\over R(\tau,r_0)}\right]\left(dT\over d\tau\right)^2+\left[1-{2M\over R(\tau,r_0)}\right]\left(dR\over d\tau\right)^2
+$$
+si ottiene la seguente relazione fra coordinata nulla out e quella in nelle coordinate di \Sch\ di una geodetica passante a ridosso dell'origine delle coordinate a $\tau=0$
+$$
+U(V)=A-B(V-V_0)^\gamma
+$$
+dove $A$ e $B$ sono costanti positive, $V_0$ identifica il valore della coordinata $V$ cor\-ri\-spon\-den\-te alla singolarit\`a ed infine $0<\gamma\leq1$ \`e una costante positiva costruita a partire dalla derivata prima della $f(y)$; la soluzione dell'equazione d'onda su ${\cal J}^+$ risulta essere nella forma
+$$
+F_{\omega}\sim{1\over\sqrt{4\pi\omega}}\left\{e^{-i\omega V}+e^{-i\omega F(V)}\right\}
+$$
+e applicando di conseguenza la teoria dei campi si ricava uno spettro per la radiazione emessa  molto diverso da quella presente nel caso di un buco nero, infatti (\Biblio{SVW98}{S.\ Barve, T.\ P.\ Singh, C.\ Vaz, L.\ Witten}{Particle creation in the marginally bound, self similar collapse of inhomogeneous dust}{gr-qc/9802035}\ e \Biblio{SiVa99}{T.\ P.\ Singh, C.\ Vaz}{Quantum radiation from black holes and naked singularities in spherical dust collapse}{gr-qc/9912063}) 
+$$
+\left|\beta(\omega^\prime,\omega)\right|^2={1\over4\pi^2\omega\omega^\prime}\left|\sum_{k=0}^\infty{\left(i\omega^\prime(B\omega)^{-1/\gamma}e^{i\pi/2\gamma}\right)^k\over k!}\Gamma\left({{k\over\gamma}+1}\right)\right|^2
+$$
+da cui si ha un flusso di energia divergente secondo la relazione
+$$
+T_{UU}(U)\sim{1\over48\pi}\left[{1-\gamma^2\over\gamma^2(U-U_0)^2}\right]\Eqno
+$$\COUNT{Energia}
+dove $U$ \`e la coordinata outgoing in \Sch\ delle geodetiche nulle ed $U_0$ \`e il valore di questa coordinata nel momento in cui si forma la singolarit\`a in esame.\par
+Lo spettro non \`e assolutamente termico e ricavarne una temperatura risulta difficoltoso, se non ipotizzando che essa sia una funzione del tipo 
+$$
+T\sim T_0\left(U-U_0\right)^{-\alpha}
+$$
+con $\alpha=2$ a causa della \Energia, da cui poi ricavare come nel caso precedente una variazione di entropia data dall'in\-te\-gra\-le effettuato all'infinito: la metrica per $r>r_0$ risulta essere la metrica di \Sch\ per cui la quantit\`a conservata rispetto al vettore $\partial_t$ coincide con la massa misurata all'infinito; il rapporto fra la sua variazione (che comunque \`e una variazione finita) e la temperatura ipotizzata da noi ci porta a stabilire che
+$$
+\delta_X S=S_0\left(U-U_0\right)^\alpha
+$$
+e quindi la variazione dell'entropia di questo ``oggetto'' risulta tendere a zero con il formarsi della singolarit\`a.
+\par
+Questo risultato porta alla constatazione che l'entropia associabile a livello geometrico a questo oggetto  risulta indipendente dalle grandezze da cui invece dipende la metrica in esame (in questo caso si tratta solamente della massa) e quindi pu\`o essere posta essere uguale a zero senza perdita di generalit\`a. 
+\par
+Questo risulta in accordo con l'interpretazione dell'entropia come mancanza di in\-for\-ma\-zio\-ne (vedi \Biblio{Pad03}{T.\ Padmanaabhan}{Gravity and thermodynamics of horizons.}{gr-qc/0311036}); una singolarit\`a nuda non ha orizzonti quindi tutte le regioni dello spazio tempo sono accessibili, in linea di principio, ad osservatori esterni.

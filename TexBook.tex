@@ -1,0 +1,74 @@
+% File di Macro e definizioni
+%
+\input miniltx.tex  % Questi due pacchetti servono per 
+\input macros
+\input Hyphen
+%
+\CapYestrue\NoPagetrue
+\topglue  1.5cm\pageno=-1
+\centerline{\titoloSec Universit\`a degli studi di Torino}%
+\vskip 0.2cm%
+\centerline{\titoloSec Facolt\`a di Scienze Matematiche, Fisiche e Naturali}%
+\vskip 0.2cm%
+\centerline{\titoloSec Corso di laurea in fisica}%
+\vskip 4cm%
+\centerline{\titoloCap Tesi di laurea}%
+\vskip 2cm%
+\centerline{\titoloCapUno Entropia e soluzioni}%
+\vskip 1cm
+\centerline{\titoloCapUno di  collasso gravitazionale}%
+\vfill%
+\line{Relatore: Prof. Mauro Francaviglia\hfill}
+\vfill
+\line{\hfill Candidato: Gianluca Pacchiella}
+\vfill
+\line{\Fronte\hfill Anno Accademico 2003/2004\hfill}
+%
+\break\CapYestrue\vbox to \vsize{\vfill\vbox{\break\line{Typeset with plain \TeX\  in date \the\day${}_{\hbox{\VecchioStile\the\time}}$\the\month.\the\year\hfill V14.99}\line{Computer Forniture by He${}^{4}$\hfill}}}
+\vfill\eject
+%
+\input Dedica
+% Indice dei capitoli
+\Sommario
+\newwrite\TOC
+\openout\TOC= \jobname.toc % Se lo apro prima non scrive niente
+% Apre il file per la Bibliografia
+\newwrite\Bib
+\openout\Bib= \jobname.bib
+%Apro il file per gli Help
+\newwrite\Aiuto
+\openout\Aiuto= \jobname.help
+%
+%
+%
+\input notazione
+\input Introdutio
+\input Geometrodinamica
+\input Collasso
+\input QFTCurva
+\input Conclusioni
+%\input Asymptotic
+\input Ringrazio
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Fine Documento
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\Titolone{Bibliografia}{}{}
+% Bisogna chiuderli per ultimi se no non ci scrive sopra!!!
+\immediate\closeout\TOC
+\immediate\closeout\Bib % Se non metti \immediate aspetta il .dvi per scrivere
+\immediate\closeout\Aiuto
+Gran parte degli articoli sono scaricabili da internet presso i seguenti indirizzi:
+\bigskip
+\Item{Physical Review:}\  {\WWW http://prola.aps.org} 
+\Item{Astrophysical Journal:}\ {\WWW http://journals.uchicago.edu}; per i volumi precedenti al $474$ andare al database della Nasa: {\WWW http://adswww.harvard.edu}
+\Item{ArXiv:}\ {\WWW http://arxiv.org}
+\Item{Living Reviews:}\ {\WWW http://relativity.livingreviews.org}
+\Item{SpringerLink:}\ {\WWW http://springerlink.metapress.com}
+\bigskip
+\input Biblio
+%\input \jobname.bib
+%\Appendix{Help}
+%\input \jobname.help
+
+\end
+

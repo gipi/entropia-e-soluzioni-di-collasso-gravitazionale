@@ -1,0 +1,342 @@
+\Chapter{Singolarit\`a\&Termodinamica}{``A luminous star, of the same density as the Earth, and whose diameter should be two hundred and fifty  times larger than that of the Sun, would not, in consequence of its
+  attraction, allow any of its rays to arrive at us; it is therefore
+  possible that the largest luminous bodies in the universe may,
+  through this cause, be invisible.''}{Pierre Laplace ({\VecchioStile1749}-{\VecchioStile1827})}
+%
+%
+%
+Nel capitolo precedente abbiamo visto la teoria generale che regola l'evoluzione della geometria spa\-zio\-tem\-po\-ra\-le e abbiamo analizzato alcune soluzioni nel vuoto che ci hanno dato un'idea di cosa succeda in sistemi fisici in presenza della gravit\`a. Tuttavia in tutte le soluzioni si sono incontrate delle singolarit\`a (quella nell'origine in \Sch\ e quella ad anello in Kerr) cio\`e dei punti in cui il tensore di curvatura (brutalmente parlando la forza gravitazionale) diverge e che fanno in maniera tale che essi non appartengano proprio allo \ST; questa situazione all'inizio si pensava dovuta all'alta simmetria delle soluzioni, tuttavia in seguito si \`e dimostrato che \`e un problema generale che si propone sotto condizioni del tutto generali causato dalla caratteristica della teoria di essere ``puramente attrattiva''.
+%
+%
+%
+\Section{Collasso Gravitazionale}
+Tutte le soluzioni delle equazioni di Einstein passate in rassegna fino a questo momento sono state tutte nel vuoto e non ci davano nessuna indicazione sulla dinamica di evoluzione interna di corpi fortemente massivi sotto la ``spinta del proprio peso'', quindi in questa sezione ci prefiggiamo lo scopo di studiare le \EqEi\ in presenza di materia e nel caso di problemi a simmetria sferica (come vedremo in seguito questa condizione non sar\`a restrittiva quanto si pensi).\par
+Si \`e definita una isometria una trasformazine che lascia la forma della metrica invariata sotto la sua azione, a livello geometrico era stata definita con la condizione $\Lie{g}{\xi}=0$ dove $\xi$ \`e il generatore infinitesimo della trasformazione che in questo caso devono essere quelli del gruppo $\hbox{\Gruppi SO}(3)$; come coordinate scegliamo le \vip{coordinate sferiche generalizzate} in maniera tale che la nostra variet\`a sia parametrizzata tramite le variabili $x^\mu=(t,r,\theta,\phi)$. La condizione di isometria \`e una relazione differenziale dalla quale conoscendo $\xi$ permette di ricavare la forma funzionale delle componenti del tensore metrico; in particolare a questo scopo la sua scrittura nella forma
+$$
+\xi^\sigma\partial_\sigma g_{\mu\nu}+g_{\mu\sigma}\partial_\nu\xi^\sigma+g_{\nu\sigma}\partial_\mu\xi^\sigma=0
+$$
+permette di ricavare a partire dai seguenti vettori di killing
+$$
+\left\{
+\eqalign{
+&\xi_{(x)}=\sin\phi\partial_\theta+\cot\theta\cos\phi\partial_\phi\cr
+&\xi_{(y)}=-\cos\phi\partial_\theta+\cot\theta\sin\phi\partial_\phi\cr
+&\xi_{(z)}=-\partial_\phi
+}
+\right.
+$$
+le seguenti ``indipendenze'':
+$$
+\partial_\phi g_{\mu\nu}=0\quad\partial_\theta g_{rr}=0\quad\partial_\theta g_{tt}=0\quad\partial_\theta g_{tr}=0
+$$
+oltre che le seguenti relazioni generate da $\xi_{(x)}$
+$$
+\eqalign{
+&\partial_\theta g_{\theta\theta}\sin\phi=2g_{\theta\phi}{\cos\phi\over\sin^2\theta}\cr
+&\partial_\theta g_{r\theta}\sin\phi=g_{r\phi}{\cos\phi\over\sin^2\theta}\cr
+&\partial_\theta g_{t\theta}\sin\phi=g_{t\phi}{\cos\phi\over\sin^2\theta}\cr
+&(\partial_\theta g_{\phi\phi}-g_{\phi\phi}\cot\theta)\sin\phi=-2g_{\theta\phi}\cr
+&(\partial_\theta g_{\theta\phi}-g_{\theta\phi}\cot\theta)\sin\phi=(-g_{\theta\theta}+g_{\phi\phi}{1\over\sin^2\theta})\cos\phi\cr
+&(\partial_\theta g_{t\phi}-g_{t\phi}\cot\theta)\sin\phi=-g_{t\theta}\cr
+&(\partial_\theta g_{r\phi}-g_{r\phi}\cot\theta)\sin\phi=-g_{r\theta}\cos\phi\cr
+}
+$$
+e quelle analoghe generate da $\xi_{(y)}$ che si ottengono da queste scambiando $\sin\phi$ con $-\cos\phi$ e $\cos\phi$ con $\sin\phi$.\par
+A questo punto il tensore metrico pu\`o essere scritto nella forma \Biblio{CiWh95}{Ciufolini Wheeler}{Gravitation and Inertia}{The Bartlett Press, Inc. (Download dei capitoli $2$ e $3$ dal sito)}\ 
+$$
+g=A(t,r)\Tensor{dt}+B(t,r)\Tensor{dr}+C(t,r)dt\otimes dr+D(t,r)(\Tensor{d\theta}+\sin^2\theta\,\Tensor{d\phi})
+$$
+ma pu\`o essere semplificato tramite trasformazioni di coordinate\Foot{I cambi espliciti di coordinate sono stati sottintesi, ovviamente le coordinate finali sono diverse da quelle con cui \`e stato iniziato il calcolo, ma sono state riscritte per non appesantire il discorso.}\ fino a portarlo alla forma
+$$
+g=-e^{\nu(t,r)}\Tensor{dt}+e^{\lambda(t,r)}\Tensor{dr}+r^2(\Tensor{d\theta}+\sin^2\theta\,\Tensor{d\phi})\Eqno
+$$\COUNT{GSF}
+che sar\`a nel seguito la metrica di uno spazio tempo a simmetria sferica in un particolare sistema di coordinate. Le equazioni di Einstein risultanti sono
+$$
+\left\{
+\eqalign{
+&\Mat{G}{t}{t}=-e^{-\lambda}\Big({1\over r^2}-{\lambda^\prime\over r}\Big)+{1\over r^2}\cr
+&\Mat{G}{r}{r}=-e^{-\lambda}\Big({1\over r^2}+{\nu^\prime\over r}\Big)+{1\over r^2}\cr
+&\Mat{G}{\theta}{\theta}=\Mat{G}{\phi}{\phi}=-{e^{-\lambda}\over2}\Big(\nu^{\prime\prime}+{\nu^{\prime2}\over2}+{\nu^\prime-\lambda^\prime\over r}+{\nu^\prime\lambda^\prime\over2}\Big)\cr
+&\Mat{G}{r}{t}=-e^{-\lambda}{\dot\lambda\over r}
+}\right.\Eqno
+$$
+\COUNT{EqEiSF}
+dove si \`e indicata la derivazione rispetto alla variabile $r$ con l'apice $(\cdot)^\prime$ e con $(\dot{\phantom{x}})$ quella rispetto alla variabile $t$.\par
+Prima di calcolare la soluzione in presenza di materia, soffermiamoci a trovare una soluzione generale nel vuoto: sottraendo fra loro le prime due equazioni della \EqEiSF\  si ottiene
+$$
+(\nu+\lambda)^\prime=0\quad\hbox{il che implica}\quad\nu+\lambda=f(t).
+$$
+Usando la liberta nella scelta della coordinata $t$ possiamo porre $f(t)=0$ e rendere il campo \vip{statico}; l'integrazione dell'equazione adesso \`e possibile, scegliendo una so\-lu\-zio\-ne tale da ottenere la metrica galileiana per $r\to\infty$ si produce come soluzione
+$$
+e^{-\lambda}=e^\nu=1+{\hbox{Costante}\over r}
+$$
+dove la costante \`e scelta in maniera tale da concordare con il valore della \CostGrav. A questo punto si ottiene come metrica risultante proprio
+$$
+g=-\Big(1-{2MG\over c^2r}\Big)\;\tensor{dt}+{1\over {1-{2MG\over c^2 r}}}\,\tensor{dr}+r^2(\tensor{d\theta}+\sin^2\theta\,\tensor{d\phi})
+$$
+che \`e la metrica di \Sch\Foot{Se la regione non contenente materia include in se anche l'origine delle coordinate ($r=0$) allora la metrica diventa galileiana in questa regione analogamente alla teoria Newtoniana.}.
+Tutto questo viene denominato \vip{teorema di Birkhoff}: {\sl uno \ST\ contenente una regione  a simmetria sferica, a\-sin\-to\-ti\-ca\-men\-te piatta e nel vuoto  risulta automaticamente indipendente dal tempo e quindi indipendente dalle propriet\`a dinamiche della sorgente}.\par
+Forti di questo risultato adesso poniamo il tensore energia-impulso essere uguale a quello di un fluido perfetto cio\`e 
+$$
+\Mat{T}{\mu}{\nu}=(\rho+p)u_\mu u_\nu+pg_{\mu\nu}
+$$
+dove $\rho$ e $p$ sono la densit\`a di energia e la pressione misurata dagli osservatori descritti da $u$ e andiamo prima di tutto a studiare le equazioni risultanti nella componente temporale; ricombinando op\-por\-tu\-na\-men\-te i termini si ottiene
+$$
+{1\over r^2}{d\over dr}\big[r(1-e^{-\lambda})\big]=k\rho
+$$
+con la quale \`e possibile definire la massa contenuta all'interno di un guscio sferico di raggio $r$
+$$
+m(r)=4\pi\int_0^rdx\,\rho(x)x^2;\Eqno
+$$
+\COUNT{MisnerMass}
+\Nota A rigor di logica la massa contenuta dovrebbe essere $m(r)=4\pi\int_0^r dx\, e^{\lambda\over2}\rho(x)x^2$, il termine mancante esprime il \vip{difetto di massa gravitazionale}.FineNota
+A questo punto l'elemento radiale della metrica risulta avere la forma
+$$
+e^{-\lambda}=\Bigg(1-{2Gm(r)\over r}\Bigg)
+$$
+Dall'equazione radiale, inserendo il risultato appena ottenuto, si ricava
+$$
+{d\nu\over dr}=G{m(r)+4\pi r^3p(r)\over r(r-2Gm(r))}\Eqno
+$$
+\COUNT{ForceG}
+che sfruttando la quadridivergenza nulla di $T_{\mu\nu}$ restituisce \Biblio{OpVo39}{J.\ R.\ Oppenheimer G.\ M.\ Volkoff}{On massive neutron cores}{Phys.\ Rev.\ 55,374 (1939)}
+$$
+{dp\over dr}=-G(p+\rho){m(r)+4\pi r^3p(r)\over r(r-2Gm(r))}\quad\triangleleft\hbox{\vip{Equazione Tolman-Oppenheimer-Volkoff}}
+$$
+\COUNT{TOV}
+Queste equazioni possono essere riscritte in una forma di pi\'u facile interpretazione fisica [EGTO]
+$$
+\eqalign{
+&{d\nu\over dr}=G{m(r)\over r^2}\bigg(1+{p\over\overline\rho}\bigg)\bigg(1-{R_s(r)\over r}\bigg)^{-1}\cr
+&{dp\over dr}=-G{\rho m(r)\over r^2}\bigg(1+{p\over\rho}\bigg)\bigg(1+{p\over\overline\rho}\bigg)\bigg(1-{R_s(r)\over r}\bigg)^{-1}\cr
+}
+$$
+dove $\overline\rho(r)={3\over r^3}\int_0^rdx\,\rho(x)x^2$.
+\Nota Le quantit\`a calcolate in questo paragrafo si prestano per un confronto con la teoria Newtoniana: prendendo $\nu$ come potenziale gravitazionale, si ha una ``forza gravitazionale'' data da \ForceG\ ed un gradiente di pressione maggiori dell'analogo classico ottenibile ponendo ${p\over \rho}\ll1$ e ${R_s(r)\over r}\ll1$. Questo causa un processo di ``ri\-ge\-ne\-ra\-zio\-ne'' della pressione: nella teoria Newtoniana \`e lei a prevenire il collasso totale del sistema, in questo caso invece, a causa dei termini proporzionali ad essa, l'aumento di pressione radiale causa un aumento della forza gravitazionale.
+FineNota
+Qualunque sia il destino della materia, a causa del teorema di Birchkoff la soluzione \GSF\ al bordo del corpo si deve saldare con quella di \Sch, il che porta la superficie  della stella a essere ``congelata'' per l'osservatore esterno nel caso essa raggiunga il cosidetto \vip{raggio di \Sch} e quindi in realt\`a la singolarit\`a in $r=0$ non esiste in quanto essa \`e ``soluzione'' nel vuoto e la materia vi cadrebbe ad un {\sl infinito temporale rispetto agli osservatori esterni}!\par
+L'unico modo per ovviare a questa situazione e poter analizzare il destino della materia stellare \`e effettuare un cambio di coordinate: poniamo
+$$
+\left\{\eqalign{
+&\tau=t+\int dr\,{f(r)\over1-{2M\over r}}\cr
+&R=t+\int dr\,{1\over f(r)\big(1-{2M\over r}\big)}
+}\right.
+$$
+In queste nuove coordinate si ottiene la metrica scritta come
+$$
+g=-{1-{2M\over r}\over1-f^2(r)}\big(\Tensor{d\tau}-f^2(r)\Tensor{dR}\big)+r^2(\tau,R)(\tensor{d\theta}+\sin^2\!\theta\,\tensor{d\phi})
+$$
+la quale si riduce ad una metrica in cosidette \vip{coordinate comoventi} se si pone $f(r)=\sqrt{2M\over r}$. Ovviamente adesso la vecchia coordinata radiale \`e definita come funzione delle nuove coordinate: 
+$$
+r(\tau,R)=\root 3 \of {2M}\big[{3\over2}(R-\tau)\big]^{2\over3} 
+$$
+\Nota Comunque $r(\tau,R)$ continua a valere come raggio effettivo. 
+FineNota
+La singolarit\`a per $r=2M$ \`e scomparsa, il che porta il bordo del corpo massivo a raggiungere la singolarit\`a in un tempo dato da 
+$$
+\tau-\tau_0={1\over c}\int^r_{r_0}\Big({2M\over r}-{2M\over r_0}\Big)^{-{1\over2}}
+$$
+che \`e palesemente finito.\par
+Forti di questo risultato cerchiamo, sempre in un problema a simmetria sferica, il comportamento nel sistema solidale con la materia, usando la seguente metrica
+$$
+g=-\Tensor{d\tau}+e^\lambda \Tensor{dR}+r^2(\tau,R)\big(\tensor{d\theta}+\sin^2\!\theta\,\tensor{d\phi}\big)
+$$
+I termini derivanti dalle equazioni di Einstein sono i seguenti
+$$
+\eqalign{
+&\Mat{G}{\tau}{\tau}=-{e^{-\lambda}\over r^2}(2rr^{\prime\prime}+r^{\prime2}-rr^\prime\lambda^\prime)+{1\over r^2}(r\dot r\dot\lambda+\dot r^2+1)\cr
+&\Mat{G}{\theta}{\theta}=-{e^{-\lambda}\over r}(2r^{\prime\prime}-r^{\prime}\lambda^{\prime})+{\dot r\dot\lambda\over r}+{\dot\lambda^2\over2}+{2\ddot r\over r}+\ddot\lambda\cr
+&\Mat{G}{r}{r}=-e^{-\lambda}r^{\prime2}+2r\ddot r+\dot r^2+1\cr
+&\Mat{G}{r}{t}=2\dot r^\prime-\dot\lambda r^\prime
+}
+$$
+e le equazioni di per s\'e non ammettono soluzione generale se non nel caso di polveri (e quindi pressione nulla); in tale situazione l'ultima equazione pu\`o essere direttamente integrata per ottenere
+$$
+e^\lambda={r^{\prime2}\over1+f(R)}
+$$
+dove $f(R)$ \`e una funzione arbitraria di integrazione con la sola condizione che $1+f>0$; a sua volta sostituita in un altra delle equazioni precedenti restituisce
+$$
+\dot r^2=f(R)+{F(R)\over r}\Eqno
+$$
+\COUNT{SimilNewton}
+dove $F(R)$ \`e un'altra funzione arbitraria. La \SimilNewton\ ha una interpretazione fisica ``immediata'': esprime matematicamente l'equazione di conservazione dell'energia interpretando il termine a sinistra dell'uguale  come energia cinetica posseduta dalla materia dati $(\tau,R)$, la funzione $f(R)$ come velocit\`a iniziale della distribuzione sferica di materia ad infinito ed infine $F(R)$ pu\`o essere interpretata come grandezza pro\-por\-zio\-na\-le alla massa contenuta all'interno di un guscio identificato da $R$ se il secondo termine a destra del segno dell'uguale viene interpretato come energia potenziale gravitazionale; questa ultima affermazione \`e confermata dal fatto che sostituendo quanto appena trovato nella equazione che coinvolge $\Mat{G}{\tau}{\tau}$ si ottiene
+$$
+k\epsilon={F(R)^\prime\over r^\prime r^2}\quad\to m(R)={F(R)\over2}
+$$
+grazie alla \MisnerMass.\par
+A prescindere dal valore assunto da $f(R)$ tutte le soluzioni hanno un com\-por\-ta\-men\-to asintotico per $\tau\to\tau_0$ (dove $\tau_0(R)$ \`e il tempo in cui il guscio di raggio $R$ raggiunge l'origine delle coordinate) tale che
+$$
+\left\{
+\eqalign{
+&r\sim\Big({9F\over4}\Big)^{1\over3}(\tau-\tau_0)^{2\over3}\cr
+&e^{\lambda\over2}\sim\Big({2F\over3}\Big)^{1\over3}{\tau^\prime\over\sqrt{1+f}}(\tau-\tau_0)^{-{1\over3}}\cr
+&k\epsilon\sim{2F^\prime\over3F\tau_0^\prime(\tau-\tau_0)}
+}\right.
+$$
+il che significa che in particolare la densit\`a tende ad un valore illimitato.\par
+L'esistenza di questa singolarit\`a non \`e influenzata in maniera decisiva dall'as\-sun\-zio\-ne di pressione nulla, in quanto si \`e visto dalla \TOV\ che la pressione non pu\`o sostenere senza limiti valori di masse troppo elevati; altri studiosi hanno provato a studiare queste situazioni fisiche con equazioni di stato pi\'u realistiche fino a trovare che oltre ad un valore di circa $1.4$ masse solari non esiste equilibrio e la stella in questione \`e soggetta al collasso sopra descritto. All'inizio si pensava che soluzioni con cos\'\i\ alta simmetria dovessero per forza sviluppare tali singolarit\`a, ma come vedremo nella prossima sezione \`e una caratteristica generale di questa teoria sviluppare punti singolari.
+%
+%
+%
+\SottoSezione{Focusing Gravitazionale e Singolarit\`a}
+Fino adesso si \`e applicato lo studio delle equazioni di Einstein a situazioni idealizzate, quali quelle di essere in presenza di problemi a simmetria sferica e si \`e trovata la presenza di singolarit\`a sia eliminabili che non; tuttavia \`e nel nostro interesse capire se questa \`e una caratteristica generale della teoria e ``purtroppo'' vedremo che lo \`e.\par
+Nell'equazione \Rayc\ che regola l'evoluzione delle grandezze che entrano in gioco nella descrizione di famiglie di geodetiche \`e presente il tensore di curvatura, presente anche nelle equazioni di Einstein e rappresenta, tramite il tensore energia-impulso, ``l'interazione'' fra geometria e materia: imponendo una condizione del tipo
+$$
+T_{\mu\nu}\xi^\mu\xi^\nu\geq0\quad\forall\xi\,\hbox{non spacelike}
+$$
+si ottiene scrivendo le equazioni di Einstein rispetto a $R_{\mu\nu}$
+$$
+\kappa R_{\mu\nu}\xi^\mu\xi^\nu=\left(T_{\mu\nu}-{1\over2}g_{\mu\nu}T\right)\xi^\mu\xi^\nu\geq0\quad\forall\xi\,\hbox{non spacelike}
+$$
+per cui utilizzandola nella \Rayc\ si ricava la seguente disuguaglianza
+$$
+{d\theta\over d\tau}\leq-{1\over n}\theta^2
+$$
+nel caso si considerino geodetiche giacenti nella stessa ipersuperficie (il che implica $\omega_{\mu\nu}=0$). Questa disuguaglianza pu\`o essere riscritta 
+$$
+{d\over d\lambda}\left(\theta^{-1}\right)\geq{1\over n}\Rightarrow
+\theta^{-1}\geq{1\over n}\lambda+\hbox{costante}\Rightarrow
+\theta^{-1}\geq{1\over n}\lambda+\theta^{-1}_0\Rightarrow
+\theta\leq{\theta_0\over1+{1\over n}\lambda\theta_0}\Eqno
+$$\COUNT{Focusing}
+considerando che la costante di integrazione non pu\`o superare il reciproco di $\theta_0=\theta(0)$.\par
+A questo punto analizzando il risultato, si ricava il fatto che se una certa famiglia di geodetiche, definenti ad un certo $\lambda_0$ una ipersuperficie, sta convergendo ($\theta_0<0$), allora continuer\`a a farlo fino a formare una singolarit\`a per un valore finito del parametro $\lambda$ cio\`e
+$$
+\lambda\to{n\over|\theta_0|}\Rightarrow\theta\to-\infty
+$$
+ dove anche quantit\`a fisiche (quali per esempio la densit\`a di materia) tendono ad infinito.\par
+Manca per\`o a questo punto una definizione vera e propria di {\sl singolarit\`a}: questi ``infiniti'' relativi alla forza gravitazionale, farebbero pensare che grandezze relative ad essa, come per esempio le componenti del tensore di curvatura, nell'intorno di questi punti singolari, abbiano un valore non limitato che ci indichi la non validit\`a della teoria, ma ricordiamoci che questi sono tensori e dunque un cambio di coordinate pu\`o far assumere alle sue componenti qualunque valore voluto, di conseguenza sarebbe importante lo studio degli scalari costruibili da esse ma a quaesto punto si pongono  due problemi: questi scalari non caratterizzano totalmente il tensore di curvatura stesso ed in pi\'u la loro costruzione algebrica prevede la contrazione tramite la metrica delle componenti $R_{\mu\nu\alpha\beta}$ come nel caso 
+$$
+I=R^{\mu\nu\alpha\beta}R_{\mu\nu\alpha\beta}=g^{\mu\rho}g^{\nu\sigma}g^{\alpha\xi}g^{\beta\zeta}R_{\mu\nu\alpha\beta}R_{\rho\sigma\xi\zeta}
+$$.\par
+Il carattere Lorentziano della metrica pu\'o permettere che due componenti aventi valore illimitato si cancellino fra loro, nascondendone il carattere singolare.\par
+Inoltre esiste la questione che queste singolarit\`a a causa del carattere della teoria sono particolari: nell'elettrodinamica, una carica puntiforme nell'origine delle coor\-di\-na\-te ha un potenziale non definito in quel punto, ma una particella neutra non avr\`a nessun problema nel passare nel punto occupato da essa; al contrario nella Relativit\`a generale il punto in questione ``non esiste'' ma \`e il ``bordo'' dello \ST\ e il comportamento di una particella passante per esso \`e indeterminato. Dunque esiste tutta una famiglia di definizioni sugli spazi-tempo singolari che fanno uso di geodetiche con il loro parametro affine esteso all'infinito
+\Def{Spazio tempo Geodeticamente completo}
+Una variet\`a $\MM$ \`e detta geodeticamente completa se e solo se tutte le sue geodetiche aventi parametro affine massimamente esteso possono essere definite su tutto $\MM$
+FineDef
+Non scendendo troppo nei dettagli si pu\`o comunque dire che esiste una sud\-di\-vi\-sio\-ne sulla completezza geodetica in base al carattere (time, space e null) delle stesse e che la (in-) completezza di un tipo non esclude la completezza di altri tipi. Un altro tipo di singolarit\`a da prendere in esame sono quelle {\sl causali:} come i film sui viaggi nel tempo (tradotti in linguaggio matematico) il futuro causale di un punto nello \ST\ ha intersezione non nulla con il suo passato causale: questo tipo di singolarit\`a si presenta per esempio con curve chiuse di tipo time o null-like; un esempio pu\`o essere la metrica di Kerr nel caso si continui analiticamente per valori di $r<0$ vicino alla singolarit\`a ad anello, in tal caso il vettore $\partial_\phi$ diventa timelike e dunque essendo una coordinata periodica rappresenta una circonferenza in cui il passato continua nel suo futuro all'infinito. Nel caso questa situazione non si presenti si ha la cosidetta \vip{condizione cronologica}.\par
+Tutte le condizioni citate sono condizioni {\sl matematiche}, relative a questioni to\-po\-lo\-gi\-che e dunque verificabili una volta trovata una soluzione, tuttavia pretendendo condizioni accettabili dal punto di vista fisico sul tensore energia impulso (e di con\-se\-guen\-za sul tensore di curvatura) del tipo
+\bigskip
+\Item{Strong Energy Condition:}\ Per ogni curva causale il suo vettore velocit\`a $u$ \`e tale da soddisfare la condizione  $R_{\mu\nu}u^\mu u^\nu\geq0$.
+\Item{Weak Energy Condition:}\ Per ogni curva null-like con vettore velocit\`a $k$ si ha $R_{\mu\nu}k^\mu k^\nu\geq0$.
+\bigskip\noindent
+si possono ottenere condizioni generali  molto interessanti:\bigskip
+\noindent\line{\hrulefill Teorema di Hawking-Penrose\hrulefill}
+Uno spazio tempo $(\MM,g)$ non pu\`o essere geodeticamente completo se una delle se\-guen\-ti condizioni si verifica
+\bigskip
+\Item{}\ Strong Energy Condition 
+\Item{}\ Ogni geodetica non spacelike avente vettore velocit\`a $u$ deve avere almeno un punto in cui $u_{[\alpha}R_{\beta]\gamma\delta[\mu}u_{\nu]}u^\gamma u^\delta\neq0$ (in pratica la variet\`a non deve essere troppo simmetrica). Viene chiamata \vip{Generic Condition}.
+\Item{}\ Condizione cronologica.
+\Item{}\ Esiste un superficie intrappolata\hfill
+\bigskip
+\noindent\line{\hrulefill}
+Un discorso a parte merita l'ultimo punto: in tutte le soluzioni esatte analizzate nel capitolo precedente era presente un cosidetto orizzonte degli eventi rappresentano da una superficie di inviluppo dei coni luce aventi la direzione del futuro verso l'interno stesso della superficie; esiste una congettura che prevede che in una soluzione di collasso si presenti sempre questo tipo di superficiee viene chiamata \vip{Congettura del Censore Cosmico}: la natura evita la formazione di \vip{Singolarit\`a Nude}.\Help{Esempi di singolarit\`a nude.}\par
+Vengono chiamate cos\'\i\ le singolarit\`a dello spazio tempo a contatto causale con l'esterno dello spazio tempo (matematicamente rappresentato da ${\cal J}^+$) e rappresentano un problema fondamentale ancora al giorno d'oggi in questa teoria. Esistono tuttavia dei teoremi analoghi a quello appena citato che  prevedono l'esistenza di superfici che ``vestono'' le singolarit\`a in condizioni abbastanza generali, ma un teorema vero e proprio  non esiste e si pensa che un'eventuale teoria completa della termodinamica dei buchi neri possa dare una soluzione, visto che usa la presenza di queste superfici e la loro interpretazione come misura dell'entropia in maniera sostanziale.
+%
+%
+%
+\Section{Termodinamica Generalizzata}
+Sempre nel capitolo precedente abbiamo osservato come grazie al processo di Penrose sia possibile trovare una formula che mette in relazione due stati di equilibrio di un buco nero in seguito alla cattura di un corpo all'interno dell'orizzonte degli eventi; la sua particolarit\`a  \`e quella di porre in collegamento formale alcune quantit\`a con ben conosciute grandezze termodinamiche quali temperatura ed entropia, in particolare l'analogia fra valore di quest'ultima quantit\`a  ed estensione dell'orizzonte degli eventi ha attirato l'attenzione di molti studiosi dagli anni 70 ad adesso.\par
+Questa analogia non avrebbe nulla di particolare se non fosse che l'entropia \`e una quantit\`a ``quantistica'' in quanto la sua definizione statistica necessita del conteggio dei microstati quantistici ed un eventuale teoria quantistica della gravit\`a deve riprodurre questo valore in un approccio semiclassico; probabilmente questa strada sarebbe stata abbandonata se Hawking non avesse trovato \Biblio{Hawk75}{S.\ W.\ Hawking}{Particle creation by black holes}{Commun.\ math.\ Phys.\ 43 199(1975)}\ che un buco nero in realt\`a a causa di effetti quantistici irradia come un corpo nero ad una temperatura esattamente uguale a quella data dalla gravit\`a superficiale. Forti di questa analogia andiamo a sviluppare le leggi di questa cosidetta ``termodinamica generalizzata''andando prima per\`o ad analizzare alcune caratteristiche geometriche degli orizzonti degli eventi.
+\Def{Orizzonte di Killing}
+Una ipersuperficie nulla $\Sigma$ \`e chiamata orizzonte di Killing di un campo vettoriale di Killing $\xi$ se su $\Sigma$ questo campo vettoriale \`e normale alla superficie.
+FineDef	
+In generale una ipersuperficie \`e determinata tramite una sua definizione implicita del tipo $f(x^\mu)=0$. Il gradiente di questa funzione rappresenta il vettore perpendicolare ai vettori velocit\`a delle curve generatrici di questa superficie che saranno ovviamente $(n-1)$; per esempio in $\RN{3}$ la sfera \`e definita dalla relazione in coordinate cartesiane
+$$
+f(x,y,z)=x^2+y^2+z^2-1
+$$
+il cui gradiente diventa $(\nabla f)^\mu=(2x,2y,2z)$ e  normalizzando si ottiene in pratica il versore in coordiante polari sferiche: a questo punto \`e semplice trovare la pa\-ra\-me\.triz\-za\-zio\-ne pi\'u semplice che \`e quella in coordinate polari
+$$
+\Sigma=(1,\theta,\phi)\quad\hbox{dove}\quad
+\left\{\eqalign{
+-\pi\leq&\theta\leq\pi\cr
+0\leq&\phi\leq2\pi}\right.
+$$
+\Figura{SupKil}{6cm}{6cm}{Orizzonte e vettore di Killing.}
+Nel caso quadridimensionale con una metrica di segnatura lorentziana si hanno tre vettori generatori ma con la possibilit\`a che il loro modulo sia nullo pur avendo componenti diverse da zero; questo dal punto di vista fisico sta a significare che questa superficie \`e tangente ai coni luce, cio\`e rappresenta una membrana dalla quale particelle fisiche non possono uscire essendo il loro ``futuro'' diretto all'interno della superficie stessa: per questo vengono chiamate \vip{trapped surfaces}. Nei casi studiati si ha a che fare inoltre con superfici che ereditano simmetrie quali quella temporale e assiale dalle metriche che lo generano; dal punto di vista geometrico la loro caratteristica di essere nulli fa s\'\i\ che i vettori tangenti, ne siano anche perpendicolari.\par
+Partendo dalla definizione data precedentemente, il vettore perpendicolare alla superficie $n^\mu$ deve essere del tipo
+$$
+n^\mu=h(x)g^{\mu\nu}\partial_\nu f(x)\quad\hbox{con la propriet\`a che}\quad
+\left\{\eqalign{
+&n^\mu n_\mu=0\cr
+&\xi^\mu=\zeta(x)n^\mu
+}\right.
+$$
+dove $\xi$ \`e il vettore di Killing mentre $\zeta$ e $h$ sono funzioni reali diverse da zero. Come abbiamo precedentemente detto, siccome la definizione di vettore tangente alla su\-per\-fi\-cie individuata da $n$ \`e quella di essere perpendicolare ad $n$ stesso, anche $n^\mu$ \`e per\-pen\-di\-co\-la\-re a se stesso e dunque anche tangente alla superficie.\par
+Quindi deve esistere una curva $\gamma(\lambda)$ su ${\cal N}$ tale che 
+$$
+n^\mu={d\gamma\over d\lambda}
+$$
+e tale che essa sia una geodetica, infatti
+$$
+\eqalign{
+n^\mu\nabla_\mu n^\alpha\Big|_{\cal N}&=n^\mu\nabla_{\mu}\left(hg^{\alpha\beta}\partial_\beta f\right)\cr
+&=n^\mu\left[\partial_\mu hg^{\alpha\beta}\partial_\beta f+hg^{\alpha\beta}\nabla_\mu\partial_\beta f\right]\cr
+&=n^\mu{\partial_\mu h\over h} hg^{\alpha\beta}\partial_\beta f+n^\mu hg^{\alpha\beta}\nabla_\beta\partial_\mu f\quad\hbox{siccome}\quad\left[\nabla,\partial\right]=0\cr
+&=n^\mu\partial_\mu\ln h \,n^\alpha+n^\mu\nabla^\alpha\left[h^{-1}\partial_\mu f h\right]h\cr
+&={d\ln h\over d\lambda}n^\alpha +n^\mu\nabla^\alpha h^{-1}\,h\partial_\mu f\,h+n^\mu\nabla^\alpha n_\mu\cr
+&={d\ln h\over d\lambda}n^\alpha -\partial^\alpha\ln h\,n^\mu n_\mu+{1\over2}\nabla^\alpha (n^\mu n_\mu)
+}
+$$
+Il secondo termine \`e nullo per ipotesi mentre  l'ultimo risulta essere il gradiente di una funzione costante su ${\cal N}$ e dunque perpendicolare a questa ipersuperficie ed in particolare   proporzionale ad $n^\mu$; fissando la proporzionalit\`a con una funzione $\alpha(x)$ e fissando $h=e^{-\alpha\lambda}$ si ottiene il risultato voluto e dunque la  ipersuperficie nulla \`e generata da geodetiche di tipo luce.\par
+Essendo il vettore di Killing semplicemente ``riscalato'' rispetto ad $n^\mu$ anch'esso risulta sia tangente che normale ad ${\cal N}$ oltre che essere nullo su di essa; rifacendo tutto il discorso per il vettore di Killing  si ottiene
+$$
+\xi^\nu\nabla_\nu\xi^\mu\Big|_{\cal N}=\kappa\xi^\mu
+$$
+dove $\kappa=\xi^\alpha\partial_\alpha\ln \zeta$ \`e chiamata \vip{gravit\`a superficiale}:
+\bigskip
+\Item{}\ $\kappa^2=-{1\over2}\nabla^\mu\xi^\nu\nabla_\mu\xi_\nu$
+\Item{}\ $\kappa^2=-{1\over4}\left(\Box\xi^2+2R_{\mu\nu}\xi^\mu\xi^\nu\right)\Big|_{\cal N}$
+\Item{}\ $\kappa^2=\partial^\mu\lambda\partial_\mu\lambda\Big|_{\cal N}\quad\hbox{dove}\quad\lambda^2=-\xi^\mu\xi_\mu$
+\Item{}\ Presa una curva sull'orbita di $\xi$ allora la sua accelerazione propria \`e uguale a $\kappa$
+\Item{}\ $\xi^\mu\partial_\mu\kappa^2=0$ ed in particolare $\kappa$ \`e costante su ${\cal N}$
+\Item{}\ $\zeta=\pm\kappa e^{\kappa y}$ dove $y$ sono le coordinate indotte sull'orbita di $\xi$
+\Item{}\ $\lambda=\pm e^{\kappa y}$\Help{Controllare se \`e sempre lo stesso $\lambda$}
+\bigskip
+Dal punto di vista fisico tutto questo pu\`o essere riassunto considerando una particella avente una curva di moto lungo l'orbita del vettore di killing $\xi$: essa non sar\`a una geodetica ma l'accelerzione propria risulter\`a essere di modulo\Foot{Da qui il suo nome.}\ pari a  $\kappa$; nel caso di \Sch, usando $\xi=\partial_t$ avremo una particella stazionaria ad una posizione fissa rispetto agli osservatori all'infinito\Foot{In pratica ``scorre solo il tempo''.}\ e  sentir\`a una accelerazione propria data da 
+$$
+\kappa_{Sch}={M\over r^2}
+$$
+avente la stessa forma che l'analogo Newtoniano; sull'orizzonte essendo $r=2M$ si ottiene 
+$$
+\kappa_{Sch}\Big|_{\cal N}={1\over 4M}
+$$
+Come \`e facile notare, il valore di $\kappa$ \`e costante su ${\cal N}$ ed \`e una caratteristica comune: per esempio su una metrica di Kerr-Newman $\xi=\partial_t+\Omega_H\partial_\phi$ e quindi\Foot{D'ora in poi per $\kappa$ intenderemo il suo valore su ${\cal N}$.}\ 
+$$
+\kappa_{\scriptscriptstyle KN}={\sqrt{M^2-a^2}\over2M\hat r_+}
+$$
+come si pu\`o notare la presenza di momento angolare diminuisce il suo valore: nel caso essa sia nulla si parla di \vip{buchi neri estremali}.\par
+Volendo studiare il comportamento delle geodetiche che generano l'orizzonte si ottiene che 
+$$
+\omega_{\mu\nu}=0
+$$
+a causa del fatto che stiamo trattando una ipersuperficie per il teorema di Frobenius; la parte simmetrica di $\nabla_\mu n_\nu$ \`e anch'essa nulla grazie all'equazione di Killing, cio\`e
+$$
+\sigma_{\mu\nu}=\nabla_{(\mu}n_{\nu)}=\nabla_{(\mu}(\zeta^{-1}\xi_{\nu)})=0
+$$
+dunque ${\cal N}$ risulta un oggetto geometrico stazionario in quanto dalla \Rayc\ si ottiene
+$$
+{d\theta\over d\tau}=0\quad\hbox{inoltre}\quad\forall\tau\,\theta(\tau)=0
+$$
+essendo per un vettore di Killing $\xi$ valevole l'identit\`a
+$$
+R_{\mu\nu}\xi^\mu\xi^\nu\Big|_{\cal N}=0
+$$
+\par
+Volendo applicare quanto detto a casi fisicamente interessanti, possiamo far presente che gli orizzonti degli eventi, indichiamoli con \Oriz, nel caso generale di una metrica di Kerr sono orizzonti di Killing del vettore
+$$
+\xi=\partial_t+\Omega_H\partial_\phi
+$$
+e sono il risultato di un collasso gravitazionale che dopo un certo tempo si pu\`o considerare concluso ed in base alle considerazioni appena fatte su queste superficie si pu\`o dire che la gravit\`a superficiale risulta costante su tutto \Oriz, proprio come la temperatura di un sistema all'equilibrio.\par
+La propriet\`a pi\'u importante della termodinamica e che influenza tutta la fisica consiste nell'affermazione che un qualunque sistema fisico, passando da una condizione di equilibrio ad un'altra, vede aumentare quella grandezza chiamata entropia messa in relazione con il ``disordine'' di un sistema. Come poter dimostrare questa propriet\`a anche in questi modelli fisici, visto che abbiamo appena affermato che $\theta=0$ sull'oriz\-zon\-te e dunque non permette una variazione di questa grandezza? Il problema sta nell'in\-ter\-pre\-ta\-zio\-ne di questa grandezza: il fatto che $d\theta/d\lambda =0$  indica solo che raggiunta la condizione di equilibrio la sua estensione non varia ma rimane costante (proprio come l'entropia di un sistema all'equilibrio), ma nel caso che il sistema sia perturbato (lasciando per esempio catturare una particella con una massa trascurabile dal buco nero) allora si passer\`a anche qui in un'altra configurazione di equilibrio per \Oriz\ caratterizzata da altri valori di $M$ e $J$; tuttavia abbiamo detto che a causa della \Focusing\ se $\theta<0$ ad un certo istante dovrebbe tendere per forza a valori negativi senza limiti e non sarebbe possibile ridiventare nullo, perci\`o l'unica possibilit\`a rimane che essa sia positiva e dunque nel processo aumenta la sua estensione bidimensionale\Foot{Essendo una ipersuperficie nulla, il suo integrale tridimensionale \`e zero!}.
+\par
+Tenendo conto che la prima legge \`e stata ricavata nel capitolo precedente (ma verr\`a ricavata in maniera pi\'u rigorosa nel prossimo) possiamo procedere ad una esposizione delle leggi della termodinamica generalizzata:
+\bigskip
+{\bf Termodinamica Generalizzata}
+\Item{Legge Zero:}\ La temperatura (gravit\`a superficiale) di un sistema all'equilibrio \`e la stessa in tutto il sistema.
+\Item{Prima Legge:}\ Due condizioni di equilibrio di un sistema termodinamico sono collegate dalla seguente legge
+$$
+dE=T\,dS-p\,dV
+$$
+dove $S$ \`e una grandezza chiamata entropia che nel caso dei buchi neri \`e pro\-por\-zio\-na\-le alla superficie bidimensionale dell'\Oe.
+\Item{Seconda Legge:}\ L'entropia di un sistema non \`e mai una funzione decrescente rispetto al tempo.

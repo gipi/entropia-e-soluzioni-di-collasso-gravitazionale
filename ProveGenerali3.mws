@@ -1,0 +1,97 @@
+{VERSION 5 0 "IBM INTEL LINUX" "5.0" }
+{USTYLETAB {CSTYLE "Maple Input" -1 0 "Courier" 0 1 255 0 0 1 0 1 0 0 
+1 0 0 0 0 1 }{CSTYLE "" -1 256 "" 0 1 0 0 0 0 0 1 0 0 0 0 0 0 0 0 }
+{CSTYLE "" -1 257 "" 0 1 0 0 0 0 0 1 0 0 0 0 0 0 0 0 }{CSTYLE "" -1 
+258 "" 0 1 0 0 0 0 0 1 0 0 0 0 0 0 0 0 }{CSTYLE "" -1 259 "" 0 1 0 0 
+0 0 0 2 0 0 0 0 0 0 0 0 }{PSTYLE "Normal" -1 0 1 {CSTYLE "" -1 -1 "" 
+0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 }0 0 0 -1 -1 -1 0 0 0 0 0 0 -1 0 }
+{PSTYLE "Heading 1" 0 3 1 {CSTYLE "" -1 -1 "" 1 18 0 0 0 0 0 1 0 0 0 
+0 0 0 0 0 }1 0 0 0 8 4 0 0 0 0 0 0 -1 0 }{PSTYLE "Heading 2" 3 4 1 
+{CSTYLE "" -1 -1 "" 1 14 0 0 0 0 0 0 0 0 0 0 0 0 0 0 }0 0 0 -1 8 2 0 
+0 0 0 0 0 -1 0 }}
+{SECT 0 {SECT 1 {PARA 3 "" 0 "" {TEXT -1 14 "WittenCollapse" }}{PARA 
+0 "" 0 "" {TEXT -1 84 "Calcoli relativi alla soluzione di collasso gra
+vitazionale proposta da Witten in ..." }}{EXCHG {PARA 0 "> " 0 "" 
+{MPLTEXT 1 0 8 "restart;" }}}{SECT 1 {PARA 4 "" 0 "" {TEXT -1 17 "Rout
+ine&Procedure" }}{PARA 0 "" 0 "" {TEXT -1 52 "Definiamo quantita' e pr
+ocedure utili per il seguito" }}{EXCHG {PARA 0 "> " 0 "" {MPLTEXT 1 0 
+79 "with(linalg):\nwith(tensor):\n\ncoord:=[t,r,theta,phi];\nassume(r>
+=0);\nk:=-8*Pi;\n\n\n" }{TEXT -1 22 "Definiamo la delta di " }{TEXT 
+256 10 "Kronecker\n" }{MPLTEXT 1 0 183 "Delta_compts:=array(symmetric,
+sparse,1..4,1..4):\nDelta_compts[1,1]:=1:\nDelta_compts[2,2]:=1:\nDelt
+a_compts[3,3]:=1:\nDelta_compts[4,4]:=1:\n\nDeltaK:=create([1,-1],eval
+(Delta_compts));\n\n\n" }{TEXT -1 13 "Definiamo il " }{TEXT 257 18 "Pr
+odotto scalare\n\n" }{MPLTEXT 1 0 68 "ProdScal:=proc(u1,u2,g)\n  prod(
+prod(u1,g,[1,1]),u2,[1,1]);\nend proc;" }{TEXT -1 16 "\n\n\nDefiniamo \+
+il " }{TEXT 258 25 "Superpotenziale di Komar\n" }{MPLTEXT 1 0 52 "Supe
+rPot:=proc(killing,Coord,Inversa,Ch2,Costante)\n " }{TEXT -1 1 " " }
+{MPLTEXT 1 0 44 "prod(Costante,antisymmetrize(\nraise(Inversa," }
+{TEXT -1 3 " \n " }{MPLTEXT 1 0 42 "cov_diff(killing,Coord,Ch2)\n,2)\n
+,[1,2])\n);" }{TEXT -1 1 "\n" }{MPLTEXT 1 0 12 "end proc;\n\n\n" }
+{TEXT -1 51 "Altre grandezze utili per le quantita' conservate\n\n" }
+{MPLTEXT 1 0 182 "Ubg:=proc(Ch2,d)\n  description \"Utile per calcoli \+
+con metriche di Back-Ground (N.B: d e' la Delta)\";  \nlin_com(1,Ch2,-
+1,symmetrize(prod(d,contract(Ch2_eta,[1,2])),[2,3]));\nend proc;\n" }}
+}}{SECT 1 {PARA 4 "" 0 "" {TEXT -1 21 "Metrica di background" }}
+{EXCHG {PARA 0 "" 0 "" {TEXT -1 48 "Qui di seguito la metrica di Back-
+Ground usata\n\n" }{MPLTEXT 1 0 185 "eta_compts:=array(symmetric,spars
+e,1..4,1..4):\n\neta_compts[1,1]:=-1:\neta_compts[2,2]:=1:\neta_compts
+[3,3]:=r^2:\neta_compts[4,4]:=r^2*sin(theta)^2:\n\neta:=create([-1,-1]
+,eval(eta_compts));" }}}{EXCHG {PARA 0 "> " 0 "" {MPLTEXT 1 0 42 "eta_
+inversa:=invert(eta,det_eta);\ndet_eta;" }}}{EXCHG {PARA 0 "> " 0 "" 
+{MPLTEXT 1 0 272 "D1Eta:=d1metric(eta,coord):\nD2Eta:=d2metric(D1Eta,c
+oord):\nCh1_eta:=Christoffel1(D1Eta):\nCh2_eta:=Christoffel2(eta_inver
+sa,Ch1_eta):\nRiem_eta:=Riemann(eta_inversa,D2Eta,Ch1_eta):\nRicci_eta
+:=Ricci(eta_inversa,Riem_eta):\nRicci_scalare_eta:=Ricciscalar(eta_inv
+ersa,Ricci_eta):" }}}}{SECT 1 {PARA 4 "" 0 "" {TEXT -1 42 "Metrica sol
+idale alle polveri Com(m)oventi" }}{EXCHG {PARA 0 "> " 0 "" {MPLTEXT 
+1 0 298 "g_compts:=array(symmetric,sparse,1..4,1..4):\n\nR(t,r):=r*(1-
+a*t/r)^(2/3);\ng_compts[1,1]:=-1:\ng_compts[2,2]:=diff(R(t,r),r):\ng_c
+ompts[3,3]:=R(t,r)^2:\ng_compts[4,4]:=sin(theta)^2*R(t,r)^2:\n\nmetric
+a:=create([-1,-1],eval(g_compts));\n\n\n\nmetrica_inversa:=invert(metr
+ica,'g'):\ndetg:=g;\n\n#assume(R(t,r)>=0);" }}}{EXCHG {PARA 0 "> " 0 "
+" {MPLTEXT 1 0 406 "D1Metrica:=d1metric(metrica,coord):\nD2Metrica:=d2
+metric(D1Metrica,coord):\nChristo1:=act(simplify,Christoffel1(D1Metric
+a)):\nChristo2:=act(simplify,Christoffel2(metrica_inversa,Christo1)):
+\nCurvatura:=act(simplify,Riemann(metrica_inversa,D2Metrica,Christo1))
+:\nRdd:=act(simplify,Ricci(metrica_inversa,Curvatura)):\nRS:=act(simpl
+ify,Ricciscalar(metrica_inversa,Rdd)):\nG:=act(simplify,Einstein(metri
+ca,Rdd,RS)):\n\n" }{TEXT -1 65 "Una delle componenti delle equazioni d
+i Einstein utile in seguito" }}{PARA 0 "> " 0 "" {MPLTEXT 1 0 21 "get_
+compts(G)[1,2]=0;" }}}{EXCHG {PARA 0 "> " 0 "" {MPLTEXT 1 0 237 "Scala
+re:=get_compts(act(simplify,prod(Curvatura,prod(prod(prod(prod(Curvatu
+ra,metrica_inversa,[1,1]),metrica_inversa,[1,1]),metrica_inversa,[1,1]
+),metrica_inversa,[1,1]),[1,1],[2,2],[3,3],[4,4]))):\neval(subs(diff(R
+(t,r),r,t)=0,Scalare));" }}}}{SECT 1 {PARA 4 "" 0 "" {TEXT -1 20 "Quan
+tita' conservate" }}{EXCHG {PARA 4 "" 0 "" {TEXT 259 68 "Utilizzando t
+ecniche uniche calcoliamo le grandezze caratteristiche\n" }{MPLTEXT 1 
+0 443 "costante:=create([],sqrt(-1*detg)/(2*k));\nF:=simplify(1/(1-b(a
+)/R(t,r))-1/(1-b(a)/R(t,r))^2*diff(R(t,r),t));\nxi_t:=create([1],array
+([1/sqrt(F),0,0,0]));\nxi_phi:=create([1],array([0,0,0,1]));\n\nm:=una
+pply(simplify(get_compts(SuperPot(xi_t,coord,metrica_inversa,Christo2,
+costante))[1,2]),t,r,theta);\nIntegrale=simplify(int(m(t,r,theta),thet
+a=-Pi..Pi));\nLimite1=limit(m(t,r,theta),r=0);\nl:=SuperPot(xi_phi,coo
+rd,metrica_inversa,Christo2,costante):" }}}{EXCHG {PARA 0 "> " 0 "" 
+{MPLTEXT 1 0 58 "WittBg:=Ubg(Christo2,DeltaK):\neta_Bg:=Ubg(Ch2_eta,De
+ltaK):" }}}{EXCHG {PARA 0 "> " 0 "" {MPLTEXT 1 0 33 "U:=lin_com(1,Witt
+Bg,-1,eta_Bg):\n\n" }{TEXT -1 24 "Massa di ``Back-Ground''" }{MPLTEXT 
+1 0 100 "\nmBg:=antisymmetrize(\nprod(costante,\nprod(xi_t,\n  prod(U,
+metrica_inversa,[2,1],[3,2])\n)\n),[1,2]);\n\n\n" }{TEXT -1 35 "Moment
+o angolare di ``Back-Ground''" }{MPLTEXT 1 0 157 "\n\nlBg:=\nantisymme
+trize(\nprod(costante,\nprod(xi_phi,\n  prod(U,metrica_inversa,[2,1],[
+3,2])\n)\n),[1,2]):\n\nMassa:=lin_com(1,m,1,mBg):\nMomAng:=lin_com(1,l
+,1,lBg):" }}}{EXCHG {PARA 0 "> " 0 "" {MPLTEXT 1 0 120 "MTot:=unapply(
+get_compts(simplify(Massa))[1,2],t,r,theta);\nAngTot:=unapply(get_comp
+ts(simplify(MomAng))[1,2],t,r,theta);" }}}{EXCHG {PARA 0 "> " 0 "" 
+{MPLTEXT 1 0 172 "Massa:=unapply(2*Pi*int(MTot(t,r,theta),theta=-Pi..P
+i),t,r);\nFunz:=unapply(diff(Massa(t,r),a),t,r);\nJ=2*Pi*int(simplify(
+limit(AngTot(t,r,theta),r=infinity)),theta=-Pi..Pi);" }}}{EXCHG {PARA 
+0 "" 0 "" {TEXT -1 21 "Quantita' conservata\n" }{MPLTEXT 1 0 140 "xi:=
+create([1],array([t,r,0,0]));\np:=create([1],array([diff(t(s),s),diff(
+r(s),s),diff(theta(s),s),diff(phi(s),s)]));\nProdScal(xi,p,metrica);" 
+}}}{EXCHG {PARA 0 "> " 0 "" {MPLTEXT 1 0 20 "simplify(Funz(t,r));" }}}
+{EXCHG {PARA 0 "> " 0 "" {MPLTEXT 1 0 0 "" }}}{EXCHG {PARA 0 "> " 0 "
+" {MPLTEXT 1 0 0 "" }}}{EXCHG {PARA 0 "> " 0 "" {MPLTEXT 1 0 0 "" }}}
+{EXCHG {PARA 0 "> " 0 "" {MPLTEXT 1 0 0 "" }}}{EXCHG {PARA 0 "> " 0 "
+" {MPLTEXT 1 0 0 "" }}}}}}{MARK "0" 0 }{VIEWOPTS 1 1 0 1 1 1803 1 1 1 
+1 }{PAGENUMBERS 0 1 2 33 1 1 }

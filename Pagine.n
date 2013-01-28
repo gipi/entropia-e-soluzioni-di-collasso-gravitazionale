@@ -1,0 +1,22 @@
+# La prima cifra indica il giorno di agosto e il secondo il numero di pagine scritto fino a quell data
+8 29
+9 28
+10 30
+11 32
+12 38
+13 41
+14 44
+15 44
+16 45
+17 47
+18 48
+20 56
+21 60
+22 61
+23 62
+25 61
+26 67
+28 68
+32 71
+33 73
+37 74

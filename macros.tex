@@ -1,0 +1,349 @@
+%
+% File di macro per tesi
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Definizioni Font
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Li puoi trovare nella directory: /usr/share/doc/texmf/fonts/ Per la Debian
+% /usr/share/texmf/fonts/tfm/public/pxfonts/
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Definisco il font da usare nei titoli capitolo
+%\font\tenrm=pxr % Palatino
+\font\Citazioni=p1xsc at 7pt
+\font\WWW=p1xsc at 10pt
+\font\VecchioStile=pcxr at 5pt %Scrive (non in modo Math) cifre tipo \oldstyle
+\font\Fronte=p1xsc at 20pt
+%\def\pal{\let\rm=\tenrm \baselineskip=12.5pt \rm}
+\font\titoloCap=pxr at 25pt
+\font\titoloCapUno=pxb at 30pt
+\font\titoloSec=pxr at 20pt
+\font\titoloSymbolSec=pxbsy at 20pt
+\font\SottoSezioneFont=pxb at 14pt
+
+%Qui carichiamo i font per il testo normale
+\def\Text{pxr }
+\font\PalatinoTextTen=\Text at 10pt
+\font\PalatinoTextSeven=\Text at 7pt
+\font\PalatinoTextFive=\Text at 5pt
+\textfont0=\PalatinoTextTen
+\scriptfont0=\PalatinoTextSeven
+\scriptscriptfont0=\PalatinoTextFive 
+\def\rm{\fam0\PalatinoTextTen}%
+% Font Grassetto
+\def\Bold{pxb }
+\font\PalatinoBold=\Bold at 10pt
+\def\bf{\fam\bffam\PalatinoBold}
+\def\pal{\rm \baselineskip=12.5pt}
+%Font italici
+\def\It{pxi }
+\def\Italic{\PalatinoItalicTen}
+\font\PalatinoItalicTen=\It at 10pt
+\textfont\itfam=\PalatinoItalicTen
+\def\it{\fam\itfam\PalatinoItalicTen}
+% Qui carica i Font Matematici
+\def\Math{pxmi }
+\font\PalatinoMathTen=\Math     at 10pt
+\font\PalatinoMathSeven=\Math   at 7pt
+\font\PalatinoMathFive=\Math    at 5pt
+\textfont1=\PalatinoMathTen
+\scriptfont1=\PalatinoMathSeven
+\scriptscriptfont1=\PalatinoMathFive
+% Qui carica i font per i simboli
+\def\MathSymbol{pxsy } 
+\font\PalatinoMathSymbolTen=\MathSymbol at 10pt
+\font\PalatinoMathSymbolSeven=\MathSymbol at 7pt
+\font\PalatinoMathSymbolFive=\MathSymbol at 5pt
+\textfont2=\PalatinoMathSymbolTen
+\scriptfont2=\PalatinoMathSymbolSeven
+\scriptscriptfont2=\PalatinoMathSymbolFive
+
+
+% Bold Matematico
+\font\PalatinoMathBold=pxbmi at 10pt
+\font\PalatinoMathBoldSeven=pxbmi at 7pt
+\textfont\bffam=\PalatinoMathBold
+\scriptfont\bffam=\PalatinoMathBoldSeven 
+\scriptscriptfont\bffam=\PalatinoMathBold %
+
+\def\MathMoreSymbol{pxex } 
+\font\PalatinoMathMoreSymbolTen=\MathMoreSymbol at 10pt
+\font\PalatinoMathMoreSymbolSeven=\MathMoreSymbol at 7pt
+\font\PalatinoMathMoreSymbolFive=\MathMoreSymbol at 5pt
+\textfont3=\PalatinoMathMoreSymbolTen
+\scriptfont3=\PalatinoMathMoreSymbolSeven
+\scriptscriptfont3=\PalatinoMathMoreSymbolFive
+
+\textfont\itfam=\PalatinoTextTen \def\it{\fam\itfam\PalatinoTextTen}%
+
+\font\Simbolo=pxsy at 20pt\newfam\Famiglia\textfont\Famiglia=\Simbolo %<-- Simbolo capitolo alla landau
+\font\SimboliSgamo=pxsya at 10pt
+\newfam\Boxies\textfont\Boxies=\SimboliSgamo
+\def\Box{\mathchar"\the\Boxies03}
+\def\BBox{\mathchar"\the\Boxies04}
+%
+\font\Gotico=pxmia%<--- Definisce il Gotico
+\font\Gruppi=pxsyb%<--- Definisce il carattere ''sbarretta''
+% Per le didascalie
+\font\CaptTitle=pxb at 7pt
+\newfam\CaptFam
+\textfont\CaptFam=\PalatinoMathSeven
+\def\Caption{\fam\CaptFam\PalatinoTextSeven}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Parametri della pagina
+\hoffset 1cm
+%\voffset 3.5cm
+\hsize 13cm
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Togliamo fastidiose sbarre nere
+\overfullrule 0pt
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Hyphenation italiano
+%\language4
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Definisco i contatori che mi sono utili
+\newcount\chapN  %<--- Per i capitoli
+\newcount\secN   %<--- Per le sezioni
+\newcount\appN   %<--- Per l'appendice
+\newcount\equatN %<--- Per le equazioni
+\newcount\footN  %<--- Per le note a pie' pagina
+\newcount\figN   %<--- Per le figure
+\newcount\defN   %<--- Per le definizioni
+\newtoks\ChapMark%<--- Per il nome del capitolo corrente
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\def\Vec#1{{\bf #1 }}
+\def\Vers#1{{\bf e}_{\hat{#1}}}
+\def\tensor#1{#1\otimes #1}
+\def\Mink{%
+Min\-ko\-wski%
+}
+\def\Sch{%
+Schwarz\-schild%%%%%
+}
+\def\ST{%
+spazio-tempo%
+}
+\def\Mat#1#2#3{%<--- Macro per indici diagonali nei tensori
+{#1}^{#2}_{\phantom{#2}{#3}}
+}
+\def\DC#1{\nabla_{#1}}
+\def\Slash#1{#1\llap{/}}
+\def\etaM{\eta\lower 1.5ex\hbox{$\scriptscriptstyle (M)$}}
+\def\gSch{g{\lower 1ex\hbox{$\scriptstyle Sch$}} }
+\def\Oe{oriz\-zon\-te de\-gli even\-ti}
+\def\SM{% <--- Macro per scrivere il simbolo maiuscolo
+\lower 1.5pt\hbox{$\mathchar"\the\Famiglia78$}
+}
+\def\MM{%<--- Scrive il simbolo di varieta'
+{\cal M}
+}
+\def\RN#1{%<--- Macro per R^#1
+\hbox{\Gruppi R}^{#1}
+}
+\def\PT#1{%<--- Macro per base TM
+\partial_{#1}
+}
+\def\chart#1#2#3{%<--- Per le funzioni coordinate Punto Indici Carta
+\smash{\buildrel{\scriptscriptstyle(#3)}\over {#1}}\vphantom{#1}#2
+}
+\def\Item#1{%<--- Per i miei item
+\item{$\triangleright$}{\bf #1}%
+}
+\def\Help#1{%<--- Serve per i commenti da parte dell'autore
+%({\bf ?})%
+\write\Aiuto{\Item{?}#1 $\to$ pg.\folio\smallskip}%
+}
+\def\Lie#1#2{%<--- Derivata di Lie
+{\cal L}_{\scriptscriptstyle#2}{#1}
+}
+\def\GC#1#2#3{%<--- Macro per le Gamma Christoffel
+\Gamma^{#1}_{\phantom{#1}{#2}{#3}}
+}
+\def\Rs{% <--- Macro per il termine della metrica di \Sch
+1-{2M\over r}
+}
+\def\Tensor#1{%<--- Macro per dx(X)dx
+#1\otimes #1%
+}
+\def\Oriz{%<--- Macro per H+
+${\cal H}_{+}$%
+}
+% MISCELLANEA
+\def\vip#1{{\bf #1}}          %<--- Per le cose importanti
+\def\FinePagina{\vfill\eject} %<--- Passa ad un'altra pagina
+\def\Figura#1#2#3#4{%<--- Macro per inserire figure centrate dando le dimensioni oltre che mettere le didascalie
+\midinsert
+\par\vbox{\bigskip\line{
+\hfill\vbox to #3{
+\hsize #2\vfill\special{psfile=#1.eps}
+}
+\hskip #2\hfill 
+}\smallskip\global\advance\figN by 1
+\line{\hfill\vtop{{\CaptTitle\noindent Figura \the\figN:}\hsize #2\Caption #4}\hfill}
+\bigskip}
+\endinsert
+}
+\def\Def#1#2FineDef{ % <--- Definizioni
+\medskip\global\advance\defN by 1
+{\bf Definizione\the\chapN.\the\defN: #1}
+\par\noindent
+%\line{\hfill\vbox{\noindent\hsize 14cm #2}\hfill}
+#2
+\hbox{\hfill$\spadesuit$}
+\smallskip
+}
+\def\Nota#1FineNota{%<--- Macro per i Nota Bene
+\bigskip\noindent
+{\bf Nota Bene:} #1
+\bigskip
+}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%Variabii Utili
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%Definisce se e' una pagina di inizio capitolo
+\newif\ifCapYes%
+\CapYesfalse%
+% devo settare il numero pagine?
+\newif\ifNoPage
+\NoPagefalse
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% CAPITOLI, Sezioni, footnote, Table of Contents
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Capitolo
+\def\Chapter#1#2#3{\global\secN=0 \FinePagina\CapYestrue % Nuova pagina e setta Inizio Capitolo=vero
+\hbox{\titoloCap \global\ChapMark={#1}\global\advance\chapN by 1 \noindent Capitolo \the\chapN}
+\bigskip
+\noindent{\titoloCapUno #1}
+\vskip  2cm
+%\hbox{\hfill\vtop{\hsize 6cm\Citazioni #2}}
+\hbox{\hfill\vtop{\leftskip = 1in %\rightskip =1in 
+\noindent\Citazioni #2%
+%\hfill + forte di \hfil
+\smallskip {\hfill\Citazioni #3}}}
+\vskip  2cm
+\AggiungiVoce{\bigskip \hbox{%
+\titoloCap\the\chapN \ /\vtop{#1 \hrulefill\folio}
+}}
+}
+
+% Sezione
+\def\Section#1{%
+\vskip 2cm\global\advance\secN by 1 
+\hbox{\vbox{\noindent\titoloSec \raise 3pt\hbox{\SM}%${\aleph}$} 
+\the\secN\hskip 20pt #1}}
+\nobreak\medskip
+\AggiungiVoce{\medskip\indent\indent {\PalatinoBold #1 \dotfill pg.\folio}}
+}
+% Sezione Pacco
+\def\SectionPacco#1{%
+\par\bigskip%
+\hbox{\vbox{\noindent\titoloSec #1}}
+\bigskip}
+
+\def\Titolone#1#2#3{
+\FinePagina\CapYestrue
+\line{\titoloCap\hfill}
+\bigskip\global\ChapMark={#1}
+\noindent{\titoloCapUno#1}
+\vskip  2cm
+%\hbox{\hfill\vtop{\hsize 6cm\Citazioni #2}}
+\hbox{\hfill\vtop{\leftskip = 1in %\rightskip =1in 
+\noindent\Citazioni #2%
+%\hfill + forte di \hfil
+\smallskip {\hfill\Citazioni #3}}}
+\vskip  2cm
+\AggiungiVoce{\bigskip \hbox{\vrule width 12pt depth 0pt\ %
+\vtop{\titoloCap#1 \hfill\folio}
+}}}
+% SottoSezione
+\def\SottoSezione#1{%
+%\bigbreak
+\vskip 1cm\noindent{{\bf #1}\hrulefill}%
+\nobreak
+\AggiungiVoce{\smallskip\indent\indent\indent #1 \dotfill pg.\folio\hskip 1em}
+\bigskip\noindent
+}
+% Appendici
+\def\Appendix#1{\FinePagina\CapYestrue
+\hbox{\global\ChapMark={#1}\titoloCap \global\advance\appN by 1 \noindent Appendice \uppercase\expandafter{\romannumeral\the\appN}}
+\bigskip\noindent{\titoloCapUno #1}\vskip 3cm%
+\AggiungiVoce{{\titoloCap\bigskip\noindent\uppercase\expandafter{\romannumeral\the\appN} /\ #1\hfill\folio}}
+}
+% Esempi
+\def\Example#1#2FineEx{%<--- Macro per gli esempi
+\smallskip
+\line{\hfill\vbox{\hrule height 1mm width 5cm}\hfill}
+{\bf Esempio:} #1\smallskip
+\noindent #2\smallskip
+\line{\hfill\vbox{\hrule height 1mm width 5cm}\hfill}\smallskip
+}
+% Note a pie' di pagina
+\def\Foot#1{%
+\global\advance\footN by 1%
+\footnote{${}^{\the\footN}$}{#1}%
+}
+
+% Headline
+\headline={%
+\ifCapYes% se e' la pagina iniziale capitolo la headline vuota
+\hfill%
+\global\CapYesfalse % se non vi e' il global non funge
+\else%     se no fai una riga orizzontale
+\vbox{{\hfill\the\ChapMark}\hrule height 0.3mm depth 0.1mm}% depth 0.1cm%
+\fi%
+%
+}
+\footline={%
+\ifNoPage\hfill\global\NoPagefalse
+\else
+\hfill\folio\hfill
+\fi
+}
+\def\COUNT#1{% <--- Macro per registrare numeri ``on fly'' si usa subito dopo l'equazione (NON FUNZIONA DENTRO L'AMBIENTE MATEMATICO!)
+	\expandafter\edef\csname #1\endcsname {%
+	(\number\the\chapN.\number\the\equatN)%
+}}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Sommario, riferimenti e bibliografia
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% TOC
+\def\Sommario{% <--- Macro per TOC
+\FinePagina\CapYestrue
+\vbox{\line{\global\ChapMark={Indice}\titoloCapUno Indice\hfill}%\hrule height .5mm depth .5mm
+\noindent\vskip 3cm
+}%
+\vskip 1cm%
+\input \jobname.toc %
+}
+
+\def\Biblio#1#2#3#4{% <--- Macro perla bibliografia
+[#1]% Questo scrive anche sul testo
+\write\Bib{\hbox{\hbox to 2cm{[#1]\hfill}\vtop{\noindent#2.``#3''\par{\Italic #4}}}\bigskip}%
+}
+
+% MATEMATICA
+\def\Eqno{% <--- Macro per le equazioni
+\global\advance\equatN by 1
+\eqno{(\the\chapN.\the\equatN)}
+}
+
+% Per eventuali inserzioni LaTex generate da Maple
+\def\frac#1#2{% <--- Inserzioni LaTeX generate da Maple 
+#1\over #2
+}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Macro per l'indice
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\bigskip
+\def\AggiungiVoce#1{% <--- Macro che inserisce una voce nel file \jobname.toc
+\write\TOC{#1}
+}
+
+
+
+
+
+
+

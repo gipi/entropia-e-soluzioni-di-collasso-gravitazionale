@@ -1,0 +1,50 @@
+{VERSION 5 0 "IBM INTEL LINUX" "5.0" }
+{USTYLETAB {CSTYLE "Maple Input" -1 0 "Courier" 0 1 255 0 0 1 0 1 0 0 
+1 0 0 0 0 1 }{PSTYLE "Normal" -1 0 1 {CSTYLE "" -1 -1 "" 0 1 0 0 0 0 
+0 0 0 0 0 0 0 0 0 0 }0 0 0 -1 -1 -1 0 0 0 0 0 0 -1 0 }{PSTYLE "Heading
+ 1" 0 3 1 {CSTYLE "" -1 -1 "" 1 18 0 0 0 0 0 1 0 0 0 0 0 0 0 0 }1 0 0 
+0 8 4 0 0 0 0 0 0 -1 0 }}
+{SECT 0 {SECT 1 {PARA 3 "" 0 "" {TEXT -1 38 "Prove con la metrica di S
+chwarzschild." }}{PARA 0 "" 0 "" {TEXT -1 52 "Definiamo le coordinate,
+ la costante k e la metrica:" }}{EXCHG {PARA 0 "> " 0 "" {MPLTEXT 1 0 
+329 "restart;\nwith(linalg):\nwith(tensor):\n\ncoord:=[t,r,theta,phi];
+\nassume(r>=0);\nk:=-8*Pi;\n\ng_compts:=array(symmetric,sparse,1..4,1.
+.4):\ng_compts[1,1]:=-(1-2*M/r):\ng_compts[2,2]:=1/(1-2*M/r):\ng_compt
+s[3,3]:=r^2:\ng_compts[4,4]:=r^2*sin(theta)^2:\nmetrica:=create([-1,-1
+],eval(g_compts));\nmetrica_inversa:=invert(metrica,'g'):\ndetg:=g;\n
+\n" }}}{EXCHG {PARA 0 "" 0 "" {TEXT -1 60 "Calcoliamoci i tensori (e n
+on) derivabili da questa metrica\n" }{MPLTEXT 1 0 427 "D1Metrica:=d1me
+tric(metrica,coord):\nD2Metrica:=d2metric(D1Metrica,coord):\nChristo1:
+=Christoffel1(D1Metrica):\nChristo2:=Christoffel2(metrica_inversa,Chri
+sto1):\n#displayGR(Christoffel2,Christo2):\nCurvatura:=Riemann(metrica
+_inversa,D2Metrica,Christo1):\nRicciscalar(metrica_inversa,Ricci(metri
+ca_inversa,Curvatura)):\nEinstein(metrica,Ricci(metrica_inversa,Curvat
+ura),Ricciscalar(metrica_inversa,Ricci(metrica_inversa,Curvatura))):\n
+" }}}{PARA 0 "" 0 "" {TEXT -1 0 "" }}{EXCHG {PARA 0 "" 0 "" {TEXT -1 
+62 "Calcoliamoci i superpotenziali relativi ai vettori di killing:" }
+{MPLTEXT 1 0 465 "\ncostante:=create([],sqrt(-1*detg)/(2*k)):\nXIT:=cr
+eate([1],array([1,0,0,0])):\nSuperpotenzialeT:=prod(raise(metrica_inve
+rsa,cov_diff(XIT,coord,Christo2),2),costante):\nXIP:=create([1],array(
+[0,0,0,1])):\nSuperpotenzialeP:=prod(raise(metrica_inversa,cov_diff(XI
+P,coord,Christo2),2),costante):\nact(display,SuperpotenzialeT);\nact(d
+isplay,SuperpotenzialeP);\n\nUT:=unapply(get_compts(SuperpotenzialeT)[
+2,1],r,theta):\nMassa=int(int(UT(r,theta),theta=-1*Pi..Pi),phi=0..2*Pi
+);\n" }{TEXT -1 0 "" }}}{EXCHG {PARA 0 "" 0 "" {TEXT -1 74 "Calcoliamo
+ci le costanti del moto:\n\nQuadrivelocita'e condizione On Shell:\n" }
+{MPLTEXT 1 0 143 "u:=create([1],array([diff(t(s),s),diff(r(s),s),diff(
+theta(s),s),diff(phi(s),s)])):\nOnShell:=get_compts(prod(u,prod(u,metr
+ica,[1,1]),[1,1]))=1:\n" }}{PARA 0 "" 0 "" {TEXT -1 54 "Vettore di kil
+ling temporale e sua costante del moto:\n" }{MPLTEXT 1 0 84 "xi_t:=cre
+ate([1],array([1,0,0,0])):\nepsilon:=prod(u,prod(xi_t,metrica,[1,1]),[
+1,1]);" }}}{EXCHG {PARA 0 "" 0 "" {TEXT -1 28 "Vettore di killing assi
+ale:\n" }{MPLTEXT 1 0 82 "xi_phi:=create([1],array([0,0,0,1])):\nL:=pr
+od(u,prod(xi_phi,metrica,[1,1]),[1,1]);" }}}{EXCHG {PARA 0 "> " 0 "" 
+{MPLTEXT 1 0 168 "OnShell:\nOS1:=subs(diff(t(s),s)=epsilon*r/(2*M-r),O
+nShell):\nOS2:=subs(diff(phi(s),s)=L/(r*sin(theta))^2,OS1):\nOS3:=subs
+(\{diff(theta(s),s)=0,theta=Pi/2\},OS2):\neval(OS3);" }}}{EXCHG {PARA 
+0 "> " 0 "" {MPLTEXT 1 0 156 "factor(OS3);\nEqRadiale:=factor(isolate(
+OS3,diff(r(s),s)^2));\nF:=unapply(rhs(subs(\{M=.0001,L=10,epsilon=10\}
+,EqRadiale)),r);\nroot(diff(rhs(EqRadiale),r),r,1);" }}{PARA 0 "> " 0 
+"" {MPLTEXT 1 0 21 "plot(F(r),r=1..100);\n" }}}{EXCHG {PARA 0 "> " 0 "
+" {MPLTEXT 1 0 0 "" }}}}}{MARK "0" 0 }{VIEWOPTS 1 1 0 1 1 1803 1 1 1 
+1 }{PAGENUMBERS 0 1 2 33 1 1 }

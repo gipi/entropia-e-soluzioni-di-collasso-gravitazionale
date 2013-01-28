@@ -1,0 +1,446 @@
+\Section{Geometria Differenziale}
+
+Una volta intuito che la forza di gravit\`a non \`e altro che la manifestazione della curvatura dello \ST\ non resta altro da fare che formalizzare cosa significa il termine ``curvo'' e come si quantifica la ``curvatura'' ed in che modo influenza il moto di particelle; andremo a studiare cio\`e quelle che vengono chiamate \vip{Variet\'a Riemanniane} ed in generale la geometria differenziale.
+%
+%
+%
+\eject
+\SottoSezione{Variet\`a}
+Per iniziare il nostro cammino iniziamo a considerare concetti che stanno alla base di questa branca della matematica prendendo spunto da \Biblio{DNF02}{B.\ A.\ Dubrovin S.\ P.\ Novikov A.\ T.\ Fomenko}{Geometria e Topologia delle variet\'a}{Geometria Contemporanea, volume 2 Edizioni Mir}: il concetto di \vip{Variet\'a}\ deriva chiaramente dalla cartografia, scienza le cui basi matematiche sono state poste da Gauss; nella pratica della cartografia le persone incaricate dei rivelamenti si dividono in gruppi in modo che:
+\item{i)} ogni porzione di terreno da rilevare venga assegnata ad un gruppo (per esempio con l'indice $\alpha$)
+\item{ii)} ogni volta che due porzioni di terreno assegnato a gruppi diversi presentino punti in comune, i gruppi devono marcare tutte le linee di corrispondenza sulle loro rispettive carte.\par
+\noindent Sulle carte viene di regola indicata la maniera per calcolare la lunghezza reale di ogni cammino che vi sia rappresentato. In genere il supporto materiale di ogni carta \`e un foglio quadrettato, cio\`e dotato di coordinate e l'insieme dei fogli o carte geografiche viene chiamato atlante.
+\Def{Variet\`a Differenziabile (Manifold)} Si definisce  ${\cal M}$ una variet\`a differenziabile di dimensione $n$ uno spazio topologico di Hausdorff avente una col\-le\-zione $\{U_\alpha,\phi_\alpha\}_\alpha$ di cosidette \vip{carte}\ dove gli $U_\alpha$ sono degli aperti di $\MM$ e le  $\phi_\alpha:U_\alpha\longmapsto \RN{n} $ funzioni coordinate aventi le propriet\`a che\smallskip
+$\triangleright$ $\bigcup_\alpha U_\alpha={\cal M}$\smallskip
+$\triangleright$ Preso $U_{\alpha\beta}=U_\alpha\bigcap U_\beta\neq 0$ allora $\phi_{\alpha\beta}=\phi_{\alpha}\circ\phi_{\beta}$ \`e un diffeomorfismo di $\RN n$
+D'ora in poi indicheremo con $\chart{x}{^\mu}{\alpha}$ le coordinate locali nella carta $U_\alpha$ del punto $x$ (cio\`e rappresenta $\phi^\mu_\alpha(x)$) (dove non necessario verr\`a tralasciata l'indicazione dell'aperto).
+FineDef
+\Figura{carta}{6cm}{6cm}{Funzione coordinate.}
+Presa una funzione $f:{\MM}\to \RN{\ }$ \`e possibile definire un rappresentante locale $f_\alpha=f\circ\phi_\alpha^{-1}\colon U_\alpha\to\RN{}$. La funzione \`e detta di classe $C^r$ se il suo rappresentante locale \`e differenziabile $r$ volte. L'insieme delle funzioni $C^\infty(\MM)$ definite su $\MM$ lo indicheremo con  ${\cal F}(\MM)$ ed \`e possibile dimostrare che forma un Anello Abeliano grazie alle operazioni di\bigskip
+\item{$\triangleright$}{\bf Somma:} $f(x)+g(x)=(f+g)(x)$
+\item{$\triangleright$}{\bf Prodotto:} $f(x)g(x)=(f\cdot g)(x)$
+\bigskip\noindent 
+queste operazioni godono della propriet\`a distributiva e associativa per ogni terna di funzioni appartenenti a ${\cal F}(\MM)$.
+
+Consideriamo il quoziente dell'insieme delle curve parametrizzate $\Gamma(\MM)$ rispetto alla relazione di equivalenza:
+$$
+\gamma\sim\tilde\gamma\iff\forall f\in{\cal F}(\MM)\quad\left\{
+\eqalign{
+&(f\circ\gamma)(0)=(f\circ\tilde\gamma)(0)\cr
+&{d\over dt}(f\circ\gamma)\Bigl|_{t=0}={d\over dt}(f\circ\tilde\gamma)\Bigl|_{t=0}	
+}\right.
+$$
+ed indichiamo la classe di equivalenza con $[\gamma]_\sim$. Sia $T_x\MM$ l'insieme di tutte le classi di equivalenza di curve basate in $x\in\MM$, chiamiamo l'unione disgiunta $T(\MM)=\coprod_{x\in\MM} T_x(\MM)$ \vip{Fibrato Tangente}\Foot{In generale \`e possibile definire un fibrato come qualcosa localmente diffeomorfo ad un prodotto cartesiano e formato da $3$ variet\`a: la base, la fibra e il cosidetto spazio totale. In questo caso si ha una struttura localmente isomorfa a $\RN{m}\times\RN{n}$.};  definiamo le linee coordinate nel punto $\chart{x_0}{^\nu}{\alpha}$ come le curve di espressione locale $\chart{c(t)}{_{\mu}^\nu}{\alpha}=x_0^\nu+t\Mat{\delta}{\nu}{\mu}$ si pu\`o dimostrare che le classi di equivalenza a cui appartengono (che in seguito indicheremo con $\chart{\partial}{_\mu}{\alpha}$). Queste formano una base per lo spazio vettoriale $T_{x_0}\MM$ e che quindi ogni vettore $v\in T(\MM)$ pu\`o essere descritto tramite le sue componenti rispetto a questa base chiamata \vip{base naturale}: $v=v^\mu\PT{\mu}$. Nel seguito sar\`a utile considerare un vettore come una derivazione su ${\cal F}(\MM)$, cio\`e una mappa che associa ad ogni $v\in T(\MM)$ un numero reale tramite
+$$
+v(f)={d\over dt}(f\circ\gamma)\Bigl|_{t=0}
+$$
+dove $[\gamma]_\sim=v$ ed $f\in{\cal F}(\MM)$. Valgono le seguenti propriet\`a:\bigskip
+\item{$\triangleright$}{\bf Linearit\`a:} $v(f+g)=v(f)+v(g)$
+\item{$\triangleright$}{\bf Regola di Leibniz:} $v(f\cdot g)=g\cdot v(f)+f\cdot v(g)$
+\bigskip
+A questo punto \`e possibile definire i \vip{campi vettoriali}\ come le sezioni\Foot{Le sezioni sono particolari applicazioni che ad ogni punto della base associano un punto in fibra.} definite su $T(\MM)$ (in futuro saranno indicati con {\Gotico X}$(\MM)$); \`e possibile estendere tutto quando detto fino ad adesso ad elementi di $T(\MM)$, aggiungendo il fatto che esiste un' operazione interna detta \vip{commutatore}
+$$
+[\quad,\quad]\colon\hbox{\Gotico X}(\MM)\times\hbox{\Gotico X}(\MM)\to\hbox{\Gotico X}(\MM)\Eqno
+$$
+definita tramite la seguente relazione
+$$
+[X,Y](f)=X(Y(f))-Y(X(f))\quad \forall f\in{\cal F}
+$$
+La coppia $(\hbox{\Gotico X}(\MM),[,])$ \`e un \vip{algebra di Lie}, cio\`e vale l'identit\`a di Jacobi:
+$$
+[X,[Y,Z]]+[Y,[Z,X]]+[Z,[X,Y]]=0.
+$$
+Il commutatore pu\`o essere anche definito tramite le relazioni tra vettori di una base $\left\{e_\alpha\right\}$ grazie alle funzioni $\Mat{C}{\mu}{\alpha\beta}$ definiti dalla formula
+$$
+[e_\alpha,e_\beta]=\Mat{C}{\mu}{\alpha\beta}e_\mu\Eqno
+$$\COUNT{FdS}
+dette \vip{funzioni di struttura}.
+\Nota Nel caso della base naturale si ha $[\partial_\mu,\partial_\nu]=0$ a causa della simmetria delle derivate seconde e di conseguenza le costanti di struttura sono nulle.
+FineNota
+Analogamente al fibrato tangente \`e possibile definire il luogo geometrico su cui sono definite le funzioni lineari a valori in $\MM$ definendo in ogni punto $x\in\MM$ uno spazio ``cotangente'' $T_x^\ast(\MM)$. La  base duale dei vettori di base in $T_x(\MM)$ definita tramite la relazione
+$$
+\chart{dx}{^\mu}{\alpha}(\chart{\partial}{_\nu}{\alpha})=\chart{\delta}{^\mu_{\phantom{\mu}\nu}}{\alpha}
+$$
+L'unione disgiunta dei $T_x^\ast(\MM)$ forma quello che \`e chiamato \vip{fibrato cotangente}\ che sar\`a indicato in seguito con $T^\ast(\MM)$.
+\Def{Trasformazioni di Coordinate}
+Prese due variet\`a: $\MM$ di dimensione $m$ e coordinate $x^\mu$, ${\cal N}$ di dimensione $n$ e coordinate $y^\alpha$, un omeomorfismo $\varphi\colon\MM\to{\cal N}$. Sia $y^\mu=\varphi^\mu(x^1,\dots,x^n)$ l'espressione locale di $\varphi$, sia essa $C^\infty(\MM)$ e denotiamo con $\Mat{J}{\mu}{\alpha}={d\varphi^\mu\over dx^\alpha}$ lo Jacobiano della tra\-sforma\-zio\-ne; allora $\varphi$ viene detto:
+\bigskip
+\Item{Diffeomorfismo:} Se sia $\varphi$ che $\varphi^{-1}$ sono differenziabili (in tal caso lo Jacobiano della trasformazione che in seguito indicheremo solamente con $\Mat{J}{\mu}{\alpha}$ \`e invertibile). L'insieme dei diffeomorfismi su $\MM$ verr\`a indicato con {\Gruppi D}iff$(\MM,{\cal N})$ e risulta avere la struttura di Gruppo di Lie. 
+\Item{Inclusione:} Se la trasformazione \`e biunivoca e  la matrice Jacobiana \`e  di rango $m$.
+\Item{Immersione:} Come nel caso precedente ma con trasformazione non biunivova (ammette autointersezioni).
+FineDef
+\noindent Per come \`e stato costruito il fibrato tangente una trasformazione fra due variet\`a si riflette automaticamente in una trasformazione fra i loro due fibrati tangenti (e cotangenti): preso un campo vettoriale $\xi\in T(\MM)$ verr\`a trasformato in un vettore $\zeta\in T{\cal N}$ tramite la relazione
+$$
+\zeta=T(\varphi)(\xi)
+$$
+dove $T\varphi$ \`e detta \vip{Mappa Tangente} definita a livello di componenti come
+$$
+\zeta^\mu=\Mat{J}{\mu}{\alpha}\xi^\alpha\quad\hbox{dove}\quad\Mat{J}{\alpha}{\mu}=\partial_\mu\varphi^\alpha
+$$
+Di conseguenza anche i vettori di base di $T(\MM)$ e le funzioni di base di $T^\ast\MM$ per una trasformazione cambiano nella seguente maniera:
+$$
+\left\{\eqalign{
+&\PT{\mu}^\prime=\Mat{J}{\alpha}{\mu}\PT{\alpha}\cr
+&dx^{\mu\prime}=\Mat{\overline J}{\mu}{\alpha}dx^\alpha
+}\right.
+$$
+dove con $\Mat{\overline J}{\mu}{\alpha}$ si \`e inteso lo jacobiano della trasformazione inversa (o l'inversa del Jacobiano della trasformazione).
+\par
+\Def{Tensori}
+Viene definito un \vip{tensore} di tipo $(r,s)$ e peso $k$ in $p\in\MM$ una mappa multilineare
+$$
+T\colon\underbrace{T_p^\ast\MM\times\dots\times T_p^\ast\MM}_{\textstyle r}\times\overbrace{T_p\MM\times\dots\times T_p\MM}^{\textstyle s}\to\RN{}
+$$
+e l'insieme di questi viene indicato con $T_p^{(r,s)}\MM$; scritto nelle basi naturali si possono esprimere le componenti
+$$
+\Mat{T}{\mu_1\dots\mu_r}{\alpha_1\dots\alpha_s}=T(dx^{\mu_1},\dots,dx^{\mu_r},\PT{\alpha_1},\dots,\PT{\alpha_s})
+$$
+fondamentali sono le sue leggi di trasformazione, in quanto presa una trasformazione di coordinate $\varphi\colon\MM\to\MM$ si ha che per $\forall T\in T_p^{(r,s)}\MM$
+$$
+\Mat{T^{\prime}}{\nu_1\dots\nu_r}{\beta_1\dots\beta_s}=\Mat{T}{\mu_1\dots\mu_r}{\alpha_1\dots\alpha_s}\Mat{\overline J}{\nu_1}{\mu_1}\dots\Mat{\overline J}{\nu_r}{\mu_r}\,\Mat{J}{\alpha_1}{\beta_1}\dots\Mat{J}{\alpha_s}{\beta_s}
+$$ 
+In pi\'u bisogna aggiungere il fatto che $T_p^{(r,s)}\MM$ \`e uno spazio vettoriale e vien da s\'e che i campi vettoriali e le forme sono rispettivamente appartententi a $T^{(1,0)}\MM$ e $T^{(0,1)}\MM$.
+FineDef
+
+A livello fisico l'uso dei tensori \`e importantissimo: a causa delle loro leggi di trasformazioni lineari se un tensore \`e nullo in un sistema di riferimento allora lo \`e in tutti i possibili sistemi di riferimento e perci\`o equazioni tensoriali soddisfano al principio generale di covarianza dettato da Einstein. A questo punto possiamo introdurre il protagonista della nostra trattazione: la \vip{metrica}.
+\Def{Metrica}
+Un tensore $g\in T_p^{(0,2)}\MM$ simmetrico nei suoi indici covarianti e non degenere\Foot{Significa che $g(v,u)=0\,\forall v\in T(\MM)\iff u=0$.}\ viene detto metrica o prodotto scalare. In seguito sar\`a indicato anche tramite $\PT{\alpha}\cdot\PT{\beta}=g(\PT{\alpha},\PT{\beta})=g_{\alpha\beta}$.\smallskip
+Pu\`o inoltre essere classificata in base al segno dei suoi autovalori\Foot{\`E una forma quadratica e la segnatura \`e definita intrinsecamente per il teorema di Sylvester.}\ e viene chiamata metrica a segnatura $(p,q)$ se pu\`o essere riscritta nella forma $$g=diag(\underbrace{+,\dots,+}_p,\overbrace{-,\dots,-}^q)$$; pi\'u in generale la sua legge di trasformazione puntuale (cio\`e a $x\in \MM$ fissato) consta di ${n(n+1)\over 2}$ equazioni lineari a $n^2$ incognite che permette di fissare a piacimento il valore delle sue componenti,  lasciando ``liberi'' ${n(n-1)\over 2}$ parametri che rappresentano fisicamente le trasformazioni di Lorentz (cio\`e il gruppo {\Gruppi SO$(p,q)$} delle trasformazioni Ortogonali Speciali).
+FineDef
+Fino ad adesso si \`e parlato di oggetti definiti puntualmente, cio\`e senza dipendenze dalla ``posizione occupata'', in realt\`a in fisica i sistemi da descrivere sono rappresentati da \vip{Campi} aventi particolari leggi di trasformazione che li caratterizzano e li classifi\-ca\-no (per esempio la temperatura \`e un campo scalare, le velocit\`a sono vettori etc.); a livello formale queste grandezze vengono definite usando i cosidetti \vip{Fibrati Naturali}\Foot{Noi non entreremo nei dettagli della teoria in quanto ci porterebbe troppo lon\-ta\-no. Per eventuali ragguagli si pu\`o riferire a testi quali \Biblio{FaFr03}{L. Fatibene M. Francaviglia}{Natural and gauge natural formalism for classical field theories}{\Help{}}}. Sui tensori in generale sono definite le seguenti operazioni
+\smallskip
+\Item{Somma:}\ Presi due tensori $A$ e $B$ con lo stesso tipo, si pu\`o definire un nuovo tensore le cui componenti sono date dalla somma delle rispettive componenti dei due tensori precedenti
+$$
+C^\alpha=(A+B)^\alpha=A^\alpha+B^\alpha
+$$
+\Item{Prodotto per scalare:}\ Preso un tensore $T$ qualsiasi ed una $f\in {\cal F}(\MM)$ si pu\`o ottenere un nuovo tensore moltiplicando ogni componente di $T$ per $f$
+$$
+S^\alpha=(f\cdot T)^\alpha=f\cdot T^\alpha
+$$
+\Item{Contrazione:}\ Dato un tensore di tipo $(r,s)$ si pu\`o ottenere un nuovo tensore di tipo $(r-1,s-1)$ contraendo fra loro due indici di carattere diverso fra loro
+ $$
+A^{\dots\alpha\dots}=A^{\dots\alpha\dots\beta\dots}_{\dots\beta\dots}
+$$
+\Item{Prodotto:}\ Dati due tensori $A\in T^{(r,s)}(\MM)$ e $B\in T^{(p,q)}(\MM)$ se ne pu\`o formare un terzo ($C$) di tipo $(r+p,s+q)$ avente componenti
+$$
+C^{\alpha\beta}=(A\cdot B)^{\alpha\beta}=A^\alpha\otimes B^\beta
+$$
+\Item{Simmetrizzazione e Antisimmetrizzazione}\ La propriet\`a di essere (anti-)sim\-me\-trico si conserva per trasformazioni di coordinate e si pu\`o dunque  rendere un tensore (anti-) simmetrico  rispetto a qualunque insieme di indici (vedi notazioni).
+\bigskip
+\noindent In particolare una variet\`a $\MM$ su cui \`e definita una metrica $g$ \`e chiamata \vip{Variet\`a Riemanniana} e sar\`a indicata con $(\MM,g)$.
+%
+%
+%
+\SottoSezione{Forme Differenziali}
+Il prodotto scalare permette di definire moduli quadri di vettori e di conseguenza lunghezza di curve che fisicamente possono rappresentare ``misure'' su particolari sistemi fisici, adesso cerchiamo di definire degli oggetti geometrici utili per la de\-fi\-ni\-zio\-ne di integrali su curve, superfici e volumi (oltre che le loro estensioni a variet\`a di dimensione generica).
+\Def{Forme Differenziali}
+Un tensore $\omega\in T^{(r,0)}\MM$, completamente antisimmetrico, \`e chia\-ma\-to forma dif\-fe\-ren\-zia\-le di grado $r$; l'insieme di tutti questi tensori verr\`a indicato con $\Lambda^\ast_r\MM$ ed eredita la struttura di spazio vettoriale da $T^{(r,0)}\MM$. Una attenzione particolare meritano i vettori di base di questo spazio che a causa dell'antisimmetria hanno dimensione data da $n\choose k$ e vengono identificati con
+$$
+dx^{\alpha_1}\wedge\dots\wedge dx^{\alpha_r}=dx^{[\alpha_1}\otimes\dots\otimes dx^{\alpha_r]}
+$$
+Ovviamente non esistono forme differenziali di grado maggiore della dimensione della variet\`a su cui sono definite.
+FineDef
+\`E possibile estendere quanto visto all'insieme $\Lambda^\ast\MM=\oplus_r\Lambda^\ast_r\MM$ e creare un'algebra gradata definita con le seguenti operazioni 
+\bigskip
+\Item{Prodotto Esterno (Wedge):}\ $\wedge\colon\Lambda^\ast_r\times\Lambda^\ast_s\to\Lambda^\ast_{r+s}$
+$$
+\eqalign{
+&(a\omega_1+b\omega_2)\wedge\omega_3=a(\omega_1\wedge\omega_3)+b(\omega_2+\omega_3)\cr
+&\omega_1\wedge\omega_2=-\omega_2\wedge\omega_1\Rightarrow\omega\wedge\omega=0\cr
+}
+$$
+dove $\omega_1,\,\omega_2,\,\omega_3\in\Lambda^\ast_1$ e $a,\,b\in \RN{}$ oppure su forme $\alpha\in\Lambda^\ast_r,\,\beta\in\Lambda^\ast_s$ vale la seguente
+$$
+\alpha\wedge\beta=(-1)^{rs}\beta\wedge\alpha
+$$
+\Item{Prodotto Interno:}\ $i_{\scriptscriptstyle\xi}\omega:\Lambda^\ast_r\to\Lambda^\ast_{r-1}$\smallskip
+definito come
+$$
+i_{\scriptscriptstyle\xi}\omega(X_1,\dots,X_{r-1})=\omega(\xi,X_1,\dots,X_{r-1})
+$$
+\indent dove $\omega\in \Lambda^\ast_r$ e gli $\left\{X_i\right\}$ (oltre che $\xi$) sono campi vettoriali su $\MM$
+\Item{Differenziale Esterno:}\ $d\colon\Lambda^\ast_r\MM\to\Lambda^\ast_{r+1}\MM$
+$$
+\eqalign{
+&df=\partial_\mu fdx^\mu\cr
+&d(\omega_1+\omega_2)=d\omega_1+d\omega_2\cr
+&d(\omega_1\wedge\omega_2)=d\omega_1\wedge\omega_2+(-1)^{\deg\omega_1}\omega_1\wedge d \omega_2\cr
+&dd\omega=0
+}
+$$
+dove $\omega$,$\omega_1$ e $\omega_2$ indicano forme di grado qualunque, mentre $f\in{\cal F}(\MM)$. 
+\Def{Integrazione di Forme}
+Sia $\MM$ una variet\`a orientabile di dimensione $n$, $U$ un sottoinsieme compatto di $\MM$ ed  $\omega\in\Lambda^\ast_n$ si definisce l'integrale di ${\bf \omega}$ su $\MM$
+$$
+\int_U{\bf \omega}=\int_{\phi_\alpha(U)}\omega_{\mu_1\dots\mu_k}dx^{\mu_1}\dots dx^{\mu_k}
+$$
+dove $\phi_\alpha$ \`e una carta locale e dunque l'integrale di destra \`e un normale integrale di Riemann in $\RN{n}$.
+FineDef
+Una applicazione di importanza fondamentale \`e il \vip{teorema di Stokes}: preso l'integrale di una forma differenziale $\omega$ su un dominio $D$ avente un bordo regolare, allora vale la seguente 
+$$
+\int_Dd\omega=\int_{\partial D}\omega\Eqno
+$$\COUNT{Stokes}
+Un caso particolare \`e il teorema fondamentale del calcolo integrale in cui si ha $D~=~[a,b]\subset\RN{}$  ed $f\colon\RN{}\to\RN{}$
+$$
+\int_{[a,b]}df=f(b)-f(a)
+$$
+essendo il bordo di un segmento i due punti estremali.\par
+Introduciamo una forma differenziale di notevole interesse pratico: \vip{la forma vo\-lu\-me} che nel seguito indicher\`o con $d\mu$ definita in una variet\`a $(\MM,g)$ $m$-dimensionale come il prodotto wedge di tutti i vettori di base del $T^\ast(\MM)$:
+$$
+d\mu=\sqrt{|g|}\,dx^1\wedge\dots\wedge dx^n\Eqno
+$$\COUNT{FVolume}
+dove $|g|$ \`e il valore assoluto del determinante della metrica, introdotto in maniera tale da avere 
+$$
+d\mu(\partial_1,\dots,\partial_m)=1
+$$
+Nel seguito indicher\`o con 
+$$
+d\mu_{\alpha_1\dots\alpha_k}=i_{\partial_{\alpha_1}}\dots i_{\partial_{\alpha_k}}d\mu\Eqno
+$$\COUNT{FVolumeTwo}
+la contrazione della forma volume con i vettori della base naturale.
+%
+%
+%
+\SottoSezione{Derivative}
+Trattiamo a questo punto il delicato discorso della differenziazione di campi tensoriali; per poter derivare un oggetto di natura geometrica, bisogna poter confrontare questi oggetti in punti differenti e quindi bisogna introdurre i concetti di flusso di tra\-sfor\-ma\-zio\-ni.
+\eject 
+\Def{Push-Forward\&Pull-Back}
+Una trasformazione $\varphi_s\colon\RN{}\to\hbox{{\Gruppi D}iff}(\MM)$ \`e detta flusso di diffeomorfismi su $\MM$ se gode delle seguenti propriet\`a
+\bigskip
+\Item{}$\varphi_0=id_\MM$
+\Item{}$\varphi^{-1}_s=\varphi_{-s}$
+\Item{}$\varphi_s\circ\varphi_t=\varphi_{s+t}$\bigskip\noindent
+che gli danno la struttura di \vip{Gruppo di Lie}.\smallskip
+Viene definito \vip{Push-Forward} di un campo vettoriale $X\in T(\MM)$ come:
+$$
+\varphi^\ast X=T(\varphi)\circ X\circ\varphi^{-1}
+$$
+ed analogamente si pu\`o definire il \vip{Pull-Back} di una $1-$forma $\omega$ come
+$$
+\varphi_\ast \omega=T(\varphi^{-1})\circ \omega\circ\varphi
+$$
+\`E possibile estendere in maniera naturale queste operazioni su $T^{(p,q)}(\MM)$ in maniera tale da poter definire il  ``trasporto'' di un campo tensoriale lungo una trasformazione.
+FineDef
+Ora abbiamo la possibilit\`a di confrontare il campo tensoriale prima \Help{sezioni di fibrato tensore} e dopo una trasformazione; cercando la ``velocit\`a'' con cui avviene questa si giunge al concetto di \vip{Derivata di Lie}.
+\Def{Derivata di Lie}
+Dato un flusso di diffeomorfismi $\varphi_s$ viene definita la derivata di Lie lungo il campo vettoriale $\xi$ di un tensore $T\in T^{(p,q)}(\MM)$ come
+$$
+\Lie{T}{\xi}={d \over ds}\Big(\varphi^\ast_s T\Big)\Big|_{s=0}
+$$
+dove $\xi={d\varphi_s \over ds}\Big|_{s=0}$ \`e detto \vip{Generatore Infinitesimo} della trasformazione.
+FineDef
+A causa della sua definizione il campo vettoriale generato \`e verticale e permette una definizione geometrica di simmetria: infatti se per un tensore qualsiasi si ha $\Lie{T}{\xi}=0$ allora la trasformazione indotta da $\xi$ lo lascia invariato ed il campo $\xi$ viene chiamato \vip{campo di Killing} del tensore $T$. Ovviamente per gli argomenti che tratteremo in seguito sar\`a importantissimo studiare i campi vettoriali che lasciano invariata la metrica che sono individuati dalla relazione
+$$
+\Lie{g}{\xi}_{\alpha\beta}=\nabla_{(\alpha}\xi_{\beta)}\Eqno
+$$\COUNT{Killing}
+\Example{Metrica di Minkowski}
+Prendiamo una variet\`a $(\MM,\etaM)$ e calcoliamo quali sono i vettori di Killing della metrica: essendo una metrica a coefficienti costanti si pu\`o studiare al posto della \Killing\ una equazione sulle derivate parziali
+$$
+\nabla_{(\alpha}\xi_{\beta)}=\partial_{(\alpha}\xi_{\beta)}
+$$
+Volendo limitare il nostro studio a trasformazioni affini avremo che 
+$$
+\left\{\eqalign{
+&\phi_{(s)}^\mu(x)=\Mat{\Lambda_{(s)}}{\mu}{\nu}x^\nu+\lambda_{(s)}^\nu\cr
+&\xi^\mu=\Mat{\xi}{\mu}{\nu}x^\nu+\zeta^\nu
+}\right.
+$$
+dove $\Mat{\xi}{\mu}{\nu}$ e $\zeta^\mu$ sono delle costanti. La formula precedente impone che sia $\xi_{(\mu\nu)}=0$ mentre non ci sono vincoli sulle $\zeta^\mu$, perci\`o si ricava che
+$$
+\Mat{\xi_{(ab)}}{\mu}{\nu}=\eta^{a\mu}\Mat{\delta}{b}{\nu}-\eta^{b\mu}\Mat{\delta}{a}{\nu}
+$$
+che non \`e altro che l'algebra delle trasformazioni di Lorentz con l'aggiunta di quattro vettori di Killing associati alle traslazioni 
+$$
+\zeta_{(a)}^\mu=\Mat{\delta}{\mu}{a}
+$$
+FineEx
+Per le forme differenziali ed i campi vettoriali esistono delle espressioni particolari per la derivata di Lie:
+\Item{Forme Differenziali:}\ Vale una formula particolare molto utile
+$$
+\Lie{\omega}{\xi}=di_\xi\omega+i_\xi d\omega
+$$
+per esempio nel caso di $d\mu$ forma volume, la scrittura in componenti ci permette di definire a livello geometrico la divergenza di un flusso vettoriale
+$$
+\Lie{d\mu}{\xi}=di_\xi d\mu=d(\xi^\alpha d\mu_\alpha)=\partial_\alpha\xi^\alpha d\mu
+$$
+\Item{Campi Vettoriali:}\ Nel caso si abbia un campo vettoriale $\zeta$, la sua derivata di Lie rispetto ad un campo vettoriale $\xi$ risulta essere uguale al commutatore fra questi due campi
+$$
+\Lie{\zeta}{\xi}=\left[\xi,\zeta\right]
+$$
+%
+%
+%
+\SottoSezione{Derivata Covariante e Curvatura}
+Come abbiamo visto, presa una variet\`a $\MM$ e  scelto un sistema di coordinate, si eredita in maniera naturale una struttura vettoriale (chiamata fibrato tangente) che ci permette di definire ``direzioni'' e ``velocit\`a''e di conseguenza derivate di tensori costruiti su di essa; tuttavia non conosciano a priori come i vettori della base naturale definiti in due punti diversi di $\MM$ siano collegati fra loro. In particolare questo non ci permete di sapere se la variazione delle componenti di un tensore studiato fra due punti molto vicini, sia dovuto solamente alla variazione ``infinitesima'' dei vettori di base rispetto a cui esso \`e stato definito, oppure una propriet\`a del tensore stesso.
+\par
+ Per capire meglio teniamo conto che la derivata direzionale di  un  tensore non rimane un tensore: osserviamo nel caso di un campo vettoriale che 
+$$
+\partial^\prime_\mu X^{\prime\nu}=\Mat{J}{\alpha}{\mu}\PT{\alpha}(\Mat{\overline{J}}{\nu}{\sigma}X^\sigma)=\Mat{J}{\alpha}{\mu}\Mat{\overline J}{\nu}{\sigma}\PT{\alpha}X^\sigma+\Mat{J}{\alpha}{\mu}X^\sigma\Mat{\overline J}{\nu}{\sigma,\alpha}
+$$
+dove il secondo termine rovina il carattere tensoriale della trasformazione\Foot{Unico caso in cui permane \`e quello in cui le entrate dello jacobiano siano delle costanti e quindi la trasformazione \`e lineare. A livello fisico queste sono trasformazioni da un sistema inerziale ad un altro.}.
+Definiamo delle grandezze che ci diano indicazioni su quanto variano le componenti dei vettori di base lungo le linee coordinate:
+$$
+\partial_\alpha e_\beta=\GC{\mu}{\alpha}{\beta}e_\mu\Eqno
+$$
+che in pratica corrisponde a scegliere una cosidetta connessione su $T(\MM)$; deriviamo il vettore $A$ (e quindi anche la base) rispetto ad una data direzione utilizzando una curva $\gamma(t)$ di velocit\`a $u$:
+$$
+\eqalign{
+\DC{u}A&={d\over dt}\left(A^\mu e_\mu\right)\Big|_{\gamma(t)}\cr
+&=u^\nu\PT{\nu}A^\mu e_\mu+A^\mu(\PT{\nu}e_\mu)^\rho u^\nu e_\rho
+\cr
+&=u^\nu(\PT{\nu}A^\mu+\GC{\mu}{\nu}{\sigma}A^\sigma)
+}
+\Eqno
+$$\COUNT{EqGeod}
+chiamando questa operazione \vip{derivata covariante}. Il suo nome discende dal fatto che la grandezza $\DC{u}A$  ha leggi di trasformazione di natura tensoriale; in generale a causa della naturalit\`a del fibrato tensoriale, una volta scelta una connessione su $T(\MM)$ essa si pu\`o estendere ad esso tramite la seguente formula:
+$$
+\DC{\mu}T^{\dots\sigma\dots}_{\dots\alpha\dots}=\PT{\mu}T^{\dots\sigma\dots}_{\dots\alpha\dots}+\dots\GC{\sigma}{\mu}{\rho}T^{\dots\rho\dots}_{\dots\alpha\dots}+\dots-\GC{\rho}{\mu}{\alpha}T^{\dots\sigma\dots}_{\dots\rho\dots}-\dots\Eqno
+$$
+\par
+Ritornando all'equazione\EqGeod\ si nota che non \`e altro che un  equazione dif\-fe\-ren\-zia\-le lineare del primo ordine (con coefficienti dati dai termini $\GC{\mu}{\nu}{\sigma}u^\nu$) che per ben noti teoremi di Analisi ammette sempre una unica soluzione date le condizioni ini\-zia\-li che in questo caso sono la curva lungo cui fare l'integrale e la velocit\`a e le componenti ini\-zia\-li; quindi in generale calcolando le componenti lungo due curve diverse restituisce risultati diversi!\par
+Ma come si pu\`o trovare l'espressione esplicita di questi coefficienti? Come si pu\`o vedere dalla formula precedente il fatto che $\DC{\mu}A$ sia nullo ci farebbe pensare che il vettore sia costante lungo la direzione $e_\mu$, in realt\`a significa solo che il variare delle componenti del vettore $A$ \`e dato solamente dal variare dei vettori della base scelta ed in particolare il suo modulo non deve variare (in quanto \`e solo spostato da un punto all'altro) e quindi si deve avere\Foot{In questo caso si dice che la connessione \`e compatibile con la metrica scelta; si pu\`o dimostrare che i simboli di Christoffel sono unici data questa condizione.}
+$$
+\eqalign{
+\DC{\mu}(e_\alpha\cdot e_\beta)&=\DC{\mu}(g_{\alpha\beta})\cr
+&=\PT{\mu}g_{\alpha\beta}-g_{\beta\rho}\GC{\rho}{\mu}{\alpha}-g_{\alpha\rho}\GC{\rho}{\mu}{\beta}\cr
+&=0
+}
+$$
+Per poter esplicitare le componenti della connessione \`e necessario prima definire un tensore detto \vip{torsione}\ che viene definito come
+$$
+\Mat{T}{\alpha}{\beta\sigma}=\GC{\alpha}{[\beta}{\sigma]}+\Mat{C}{\alpha}{\beta\sigma}
+$$
+dove $\Mat{C}{\alpha}{\beta\sigma}$ sono le funzioni  di struttura \FdS; questo porta alla seguente relazione fra le componenti della metrica e la connessione \Foot{Esiste un passaggio intermedio in cui, calcolando il commutatore fra derivate covarianti rispetto ad una $f\in{\cal F}(\MM)$, si ricava $\Mat{T}{\alpha}{\beta\sigma}=0$.}
+$$
+\GC{\mu}{\alpha}{\beta}={1\over2}g^{\mu\sigma}\left\{\partial_\alpha g_{\beta\sigma}+\partial_\beta g_{\alpha\sigma}-\partial_\sigma g_{\alpha\beta}\right\}+{1\over2}\left[\Mat{C}{\mu}{\alpha\beta}+g^{\mu\rho}g_{\alpha\zeta}\Mat{C}{\zeta}{\rho\beta}+g^{\mu\rho}g_{\beta\zeta}\Mat{C}{\zeta}{\rho\alpha}\right]\Eqno
+$$\COUNT{DefCon}
+Nel caso vengano scelte le coordinate di base si ha $\Mat{C}{\alpha}{\beta\sigma}=0$ e si ottengono  quelli che vengono  chiamati \vip{simboli di Christoffel}. A causa delle leggi di trasformazioni di questi oggetti \`e possibile scegliere sempre un sistema di coordinate tale che in un punto (pi\'u tardi vedremo lungo tutta una curva) si abbia $\GC{}{}{}=0$ ed in tal caso questo sistema di coordinate viene chiamato \vip{Galileiano} e la derivata covariante si trasforma nella derivata parziale ordinaria; \`e possibile costruire a questo punto un tensore che ci dia indicazioni sulla ``curvatura'' dello spazio in questione? Abbiamo visto che a percorsi diversi corrispondono cosidetti ``trasporti paralleli'' diversi, dunque quantificando di quanto differiscono questi trasporti si riesce ad ottenere il \vip{tensore di curvatura di Riemann}\ 
+$$
+\eqalign{
+\Delta A^\mu&=\oint \GC{\mu}{\alpha}{\nu}A^\alpha dx^\nu\cr
+&=\int_DR^\mu_{\phantom{\mu}\alpha\sigma\nu}A^\alpha dx^\sigma\wedge dx^\nu
+}\Eqno
+$$
+\Figura{curvatura}{6cm}{6cm}{In uno spazio curvo il trasporto parallelo di un vettore dipende dal cammino usato; il tensore di curvatura in pratica rappresenta la variazione in\-fi\-ni\-te\-si\-ma per unit\`a di area inclusa dalla curva. Nella figura sopra \`e mostrato il caso del trasporto parallelo lungo un percorso chiuso di un vettore sulla sfera.}
+\noindent dove 
+$$
+R^\mu_{\phantom{\mu}\alpha\sigma\nu}=\partial_{\sigma}\GC{\mu}{\alpha}{\nu}-\partial_{\nu}\GC{\mu}{\alpha}{\sigma}+\GC{\mu}{\beta}{\sigma}\GC{\beta}{\nu}{\alpha}-\GC{\mu}{\beta}{\nu}\GC{\beta}{\sigma}{\alpha}
+$$ 
+ha le seguenti propriet\`a:
+\Item{Antisimmetria:}\ $\Mat{R}{\mu}{\alpha\beta\sigma}=-\Mat{R}{\mu}{\alpha\sigma\beta}$ 
+\Item{Propriet\`a Ciclica:}\ $\Mat{R}{\mu}{\alpha\beta\sigma}+\Mat{R}{\mu}{\sigma\alpha\beta}+\Mat{R}{\mu}{\beta\sigma\alpha}=0$
+\Item{Identit\`a di Bianchi:}\ $\nabla_{\alpha}\Mat{R}{\mu}{\nu\beta\sigma}+\nabla_{\sigma}\Mat{R}{\mu}{\nu\alpha\beta}+\nabla_{\beta}\Mat{R}{\mu}{\nu\sigma\alpha}=0$\bigskip\noindent
+Il tensore di curvatura inoltre entra anche nella relazione di commutazione fra derivate covarianti
+$$
+\left[\nabla_\alpha,\nabla_\beta\right]\xi^\mu=\Mat{R}{\mu}{\nu\alpha\beta}\xi^\nu
+$$
+e si pu\`o dimostrare che uno spazio pu\`o essere considerato piatto solamente nel caso si abbia $\Mat{R}{\mu}{\alpha\beta\sigma}=0$ per ogni combinazione di indici.\par\noindent
+Altre quantit\`a importanti per quello che diremo in seguito sono
+\Item{Tensore di Ricci:}\ $R_{\alpha\beta}=\Mat{R}{\mu}{\alpha\mu\sigma}$
+\Item{Scalare di Ricci:}\ $R=g^{\alpha\beta}R_{\alpha\beta}$
+\Item{Tensore Conforme Di Weyl:}\ $C_{\mu\nu\alpha\beta}=R_{\mu\nu\alpha\beta}+\left\{g_{\mu[\beta}R_{\alpha]\nu}+g_{\nu[\beta}R_{\alpha]\mu}\right\}+{1\over3}g_{\mu[\alpha}g_{\beta]\nu}R$\bigskip\noindent
+Questo ultimo tensore ha le stesse simmetrie del tensore di Riemann viste pre\-ce\-den\-te\-men\-te ma in pi\'u ha la propriet\`a che la contrazione su qualunque coppia di indici \`e nulla, inoltre  \`e di importanza notevole nello studio delle cosidette \vip{trasformazioni conformi}: le trasformazioni conformi sono trasformazioni della metrica del tipo 
+$$
+g^\prime=\Omega^2(x)g
+$$
+che in pratica riscalano con una funzione positiva dipendente dai punti sulla variet\`a la metrica definita su di essa; il tensore di Weyl \`e invariante per tra\-sfor\-ma\-zio\-ni conformi e dunque uno spazio \`e detto conformemente piatto se $C_{\mu\nu\alpha\beta}=0$ in quanto significa che esiste una tra\-sfor\-ma\-zio\-ne conforme tale che
+$$
+g=\Omega^2(x)\etaM 
+$$
+Esiste cio\`e una trasformazione tramite cui la metrica a meno di una funzione posistiva che la moltiplica \`e uguale alla metrica piatta.
+%
+%
+%
+\SottoSezione{Osservatori}
+Arrivati a questo punto abbiamo introdotto tutto il formalismo necessario per poter poi discutere nel prossimo capitolo le equazioni di Einstein, equazioni cio\`e che regolano il comportamento della geometria dello spazio e del tempo in presenza di materia. In questa sezione  il nostro obiettivo \`e soffermarci sulla definizione geometrica di osservatore: in base al principio di equivalenza \`e sempre possibile trovare una regione abbastanza piccola dello \ST\ (quale pu\`o essere un laboratorio, un ascensore etc.) tale da poter usare le leggi della relativit\`a speciale senza problemi ed in par\-ti\-co\-la\-re in assenza di forze esso si dovr\`a muovere in ``caduta libera''.\par
+Dal punto di vista matematico perci\`o un osservatore non soggetto a forze sar\`a descritto da una curva tale da  avere una quadriaccelerazione nulla o pi\'u spe\-ci\-fi\-ca\-ta\-men\-te, possedere un vettore velocit\`a trasportato parallelamente a se stesso, cio\`e
+$$
+u^\mu\DC{\mu}u^\nu=0\quad\hbox{in componenti}\quad{d^2\gamma^\nu\over d\tau^2}+\GC{\nu}{\rho}{\mu}{d\gamma^\mu\over d\tau}{d\gamma^\rho\over d\tau}=0
+$$
+Questo genere di curve matematicamente \`e la generalizzazione agli spazi curvi del concetto di retta, fisicamente \`e la generalizzazione del moto libero in presenza di forze gravitazionali: infatti interpretando il secondo termine della equazione come ``accelerazione gravitazionale'' sappiamo che esiste sempre un sistema di coordinate in cui sono nulle le $\Gamma$ e a cui corrisponde il sistema in ``caduta libera''.\par
+In generale comunque anche un corpo soggetto a forze potr\`a (in un punto) scegliere un sistema di coordinate a esso solidale tale che la metrica abbia espressione $\etaM$, perci\`o definiamo un osservatore come una famiglia di curve non spacelike pa\-ra\-me\-triz\-za\-te da un pa\-ra\-me\-tro affine $\tau$ (equivalente matematicamente alla lunghezza della curva e fisicamente al tempo misurato da un orologio solidale all`osservatore) e da un insieme di $3$ parametri $\{r^\alpha\}$ che individuano a $\tau$ fissato tutte le curve (in pratica una specie di sistema di coordinate nello spazio tridimensionale).
+\Def{Connecting Vector}
+Data una famiglia di geodetiche $\gamma(r^{\alpha},\tau)$ parametrizzate con 3 parametri $\{r^\alpha\}$ ed aventi parametro affine $\tau$, si definisce come connecting vector la grandezza
+$$
+n^\mu_{(\alpha)}=\left({d\gamma\over dr^\alpha}\right)^\mu
+$$
+FineDef
+\Figura{Geod}{6.5cm}{5cm}{Famiglia di geodetiche non spacelike.}
+Questa grandezza segue la  \vip{equazione di deviazione geodetica}\ 
+$$
+\ddot n^\mu=-\Mat{R}{\mu}{\alpha\nu\beta}n^\nu u^\alpha u^\beta
+$$
+che mette in relazione l'accelerazione fra geodetiche vicine (separate dal vettore $n$) ed il tensore di curvatura.\par
+Nel caso la variet\`a ammetta una simmetria per la metrica definita su di essa, allora la quantit\`a definita come prodotto scalare fra il vettore di Killing generatore della simmetria $\xi$ e la quadrivelocit\`a $u$ della geodetica rimane costante, infatti
+$$
+\eqalign{
+{d\over d\tau}\left(\xi\cdot u\right)&=u^\mu\nabla_\mu \left(\xi\cdot u\right)\cr
+&=g_{\alpha\beta}\left[\xi^\alpha u^\mu\nabla_\mu u^\beta+u^\beta u^\mu\nabla_\mu\xi^\alpha\right]\cr
+&=0
+}
+$$
+a causa del fatto che il primo termine della sommatoria \`e nullo per la condizione di quadriaccelerazione nulla ed il secondo per la condizione dovuta alla \Killing.
+\par
+L'insieme dei punti parametrizzati da $\{r^\alpha\}$ a $\tau$ fissato forma una ipersuperficie spacelike $\Sigma$ che rappresenter\`a il nostro ``mondo tridimensionale''\Foot{Non \`e detto che questa terna di vettori individui uno spazio senza ambiguit\`a, cio\`e non \`e detto che questa ipersuperficie $\Sigma$ sia definita globalmente.}; individuiamo un osservatore tramite il suo vettore $u$ grazie al quale \`e possibile definire due operatori lineari su $T(\MM)$\Help{\`e globale sta robe?} 
+$$
+\eqalign{
+&\pi\colon T (\MM)\to T_\parallel(\MM)\cr
+&h\colon T (\MM)\to T_\perp(\MM)
+}
+$$
+dove
+$$
+\eqalign{
+&T_\perp(\MM)=\big\{v\in T(\MM)|u\cdot v=0\big\}\cr
+&T_\parallel(\MM)=\big\{v\in T(\MM)\,|\, \exists \lambda\in\RN{},\,v=\lambda u\big\}
+}
+$$
+in questo modo un vettore pu\`o essere scritto in maniera unica come somma di $\pi(v)$ e $h(v)$ risultando perci\`o che $T(\MM)=T_\perp(\MM)\oplus T_\parallel(\MM)$. Adesso scegliamo una terna\Foot{Assumiamo che la variet\`a in esame sia quadridimensionale.}\ di vettori $\{e_{\hat a}\}$ con $a=1,2,3$ su $T_\perp(\MM)$ tale che identificando $e_{\hat 0}$ con il vettore tangente alla curva si abbia un insieme di vettori
+$$
+\{e_{\hat \mu}\}\quad\mu=0,\dots,3\quad\hbox{tali che}\quad e_{\hat \mu}\cdot e_{\hat \nu}=\eta_{\hat\mu\hat\nu}\Eqno
+$$\COUNT{DefTetr}
+tale insieme \`e detto \vip{tetrade}.
+\Figura{Tetrade}{6cm}{4cm}{Tetrade su una traiettoria timelike.}
+\Nota D'ora in poi con gli indici greci indicheremo componenti che scorrono i loro valori da $0$ a $3$, con gli indici latini componenti che scorrono da $1$ a $3$; in aggiunta, nel caso  gli indici siano ``incappucciati'' sono riferiti a vettori di base ortonormali. FineNota
+La descrizione fisica tramite le tetradi rimane invariata in quanto le componenti del tensore metrico possono essere ricavate dalle componenti $e_{\hat\mu}=\Mat{e}{\alpha}{\hat\mu}e_\alpha$ grazie alla~\DefTetr
+$$
+g_{\alpha\beta}=\Mat{e}{\hat\mu}{\alpha}\Mat{e}{\hat\nu}{\beta}\eta_{\hat\mu\hat\nu}
+$$
+Ritornando alla grandezza $h$  la si pu\`o scrivere in componenti tramite il campo vettoriale $u$
+$$
+h_{\mu\nu}=g_{\mu\nu}+u_\mu u_\nu
+$$
+avente la propriet\`a che
+$$
+\left\{
+\eqalign{
+&\Mat{h}{\mu}{\nu}\Mat{h}{\nu}{\sigma}=\Mat{h}{\mu}{\sigma}\cr
+&\Mat{h}{\mu}{\nu}u^\nu=0\quad\Mat{h}{\mu}{\nu}u_\mu=0
+}\right.
+$$
+dove gli indici sono stati abbassati con la metrica $g$. Per studiare in che modo si comportano le curve \`e importante lo studio della grandezza 
+$$
+\nabla_\mu u_\nu=\theta+\sigma_{\mu\nu}+\omega_{\mu\nu}
+$$
+sviluppata lungo le  sue componenti irriducibili
+$$
+\cases{
+\theta=\nabla_\mu u^\mu&$\triangleleft$ Expansion \cr
+\sigma_{\mu\nu}=\nabla_{(\mu} u_{\nu)}-{1\over n}\theta\, h_{\mu\nu}&$\triangleleft$ Shear\cr
+\omega_{\mu\nu}=\nabla_{[\mu} u_{\nu]}&$\triangleleft$ Twist
+}
+$$
+dove $n=2,3$ a seconda se si trattino rispettivamente di una famiglia di geodetiche nulle o di tipo tempo.
+Derivando rispetto al tempo proprio delle geodetiche si ha
+$$
+\eqalign{
+{d\over d\tau}\left(\nabla_{\mu}u_\nu\right)&=u^\alpha\nabla_\alpha\nabla_{\mu}u_\nu\cr
+&=u^\alpha\nabla_\mu\nabla_\alpha u_\nu+u^\alpha R_{\alpha\mu\nu\sigma}u^\sigma\cr
+&=\nabla_\mu\left(u^\alpha\nabla_\alpha u_\nu\right)-\nabla_\mu u^\alpha\nabla_\alpha u_\nu+u^\alpha R_{\alpha\mu\nu\sigma}u^\sigma\cr
+}
+$$
+prendendone la traccia si ottiene la \vip{equazione di Raychauduri}:
+$$
+{d\theta\over d\lambda}=-{1\over n}\theta^2-\sigma_{\mu\nu}\sigma^{\mu\nu}+\omega_{\mu\nu}\omega^{\mu\nu}-R_{\mu\nu}u^\mu u^\nu\Eqno
+$$\COUNT{Rayc}
+equazione di notevole importanza per il comportamento generale dello spaziotempo, ne vedremo l'utilizzo nel prossimo capitolo.

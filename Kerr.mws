@@ -1,0 +1,62 @@
+{VERSION 5 0 "IBM INTEL LINUX" "5.0" }
+{USTYLETAB {CSTYLE "Maple Input" -1 0 "Courier" 0 1 255 0 0 1 0 1 0 0 
+1 0 0 0 0 1 }{CSTYLE "" -1 256 "" 1 12 0 0 0 0 0 0 0 0 0 0 0 0 0 0 }
+{CSTYLE "" -1 257 "" 0 1 0 0 0 0 0 1 1 0 0 0 0 0 0 0 }{CSTYLE "" -1 
+258 "" 0 1 0 0 0 0 0 1 1 0 0 0 0 0 0 0 }{PSTYLE "Normal" -1 0 1 
+{CSTYLE "" -1 -1 "" 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 }0 0 0 -1 -1 -1 0 
+0 0 0 0 0 -1 0 }{PSTYLE "Heading 1" 0 3 1 {CSTYLE "" -1 -1 "" 1 18 0 
+0 0 0 0 1 0 0 0 0 0 0 0 0 }1 0 0 0 8 4 0 0 0 0 0 0 -1 0 }}
+{SECT 0 {SECT 1 {PARA 3 "" 0 "" {TEXT -1 16 "Metrica di Kerr\n" }
+{TEXT 256 23 "Definiamo il necessario" }}{EXCHG {PARA 0 "> " 0 "" 
+{MPLTEXT 1 0 148 "restart;\nwith(linalg):\nwith(tensor):\n\ncoord:=[t,
+r,theta,phi];\n#assume(r>=0);\n#assume(-Pi <= theta,theta <= Pi);\n#as
+sume(0<=phi,phi<2*Pi);\n\nk:=-8*Pi;" }{TEXT -1 2 "\n\n" }{MPLTEXT 1 0 
+0 "" }}}{EXCHG {PARA 0 "" 0 "" {TEXT -1 21 "Definiamo la metrica\n" }
+{MPLTEXT 1 0 399 "g_compts:=array(symmetric,sparse,1..4,1..4):\n\nDelt
+a:=(r^2-2*M*r+a^2);\nrho:=sqrt(r^2+a^2*cos(theta)^2);\n\n#a:=0;\n\ng_c
+ompts[1,1]:=-(1-2*M*r/rho^2):\ng_compts[2,2]:=rho^2/Delta:\ng_compts[3
+,3]:=rho^2:\ng_compts[4,4]:=(r^2+a^2+(2*M*r*a^2/rho^2)*sin(theta)^2)*s
+in(theta)^2:\ng_compts[1,4]:=-4*M*r*a*sin(theta)^2/rho^2:\n\n\nmetrica
+:=create([-1,-1],eval(g_compts));\nmetrica_inversa:=invert(metrica,'g'
+):\ndetg:=g;\n" }}}{EXCHG {PARA 0 "" 0 "" {TEXT -1 38 "Connessioni, Cu
+rvature e quant'altro:\n" }{MPLTEXT 1 0 84 "factors(detg);\nfactors(x^
+2-1);\nfactor(coeff(coeff(detg,sin(theta)^2),cos(theta)^2));" }}}
+{EXCHG {PARA 0 "" 0 "" {TEXT -1 60 "Calcoliamoci i tensori (e non) der
+ivabili da questa metrica\n" }{MPLTEXT 1 0 694 "D1Metrica:=d1metric(me
+trica,coord):\nD2Metrica:=d2metric(D1Metrica,coord):\nChristo1:=Christ
+offel1(D1Metrica):\nfactor(simplify(subs(sin(theta)^2=1-cos(theta)^2,g
+et_compts(Christo1)[3,1,4])));\nChristo2:=Christoffel2(metrica_inversa
+,Christo1):\n#displayGR(Christoffel2,Christo2):\nCurvatura:=Riemann(me
+trica_inversa,D2Metrica,Christo1):\nRicciscalar(metrica_inversa,Ricci(
+metrica_inversa,Curvatura)):\nG:=Einstein(metrica,Ricci(metrica_invers
+a,Curvatura),Ricciscalar(metrica_inversa,Ricci(metrica_inversa,Curvatu
+ra))):\n\n#displayGR(Riemann,Curvatura):\n\n# Calcoliamo uno scalare r
+icavato dal tensore di curvatura\n\nScalare:=prod(Curvatura,raise(metr
+ica_inversa,Curvatura,1,2,3,4),[1,1],[2,2],[3,3],[4,4]):" }}}{EXCHG }
+{EXCHG {PARA 0 "" 0 "" {TEXT -1 20 "Condizione On Shell\n" }{MPLTEXT 
+1 0 204 "u:=create([1],array([diff(t(s),s),diff(r(s),s),diff(theta(s),
+s),diff(phi(s),s)])):\nOnShell:=get_compts(prod(u,prod(u,metrica,[1,1]
+),[1,1]))=-1;\nOnShell2:=get_compts(prod(u,prod(u,metrica,[1,1]),[1,1]
+))=0;" }}}{EXCHG {PARA 0 "" 0 "" {TEXT -1 16 "Quadrivelocita'\n" }
+{MPLTEXT 1 0 83 "u:=create([1],array([diff(t(s),s),diff(r(s),s),diff(t
+heta(s),s),diff(phi(s),s)])):\n" }}}{EXCHG {PARA 0 "" 0 "" {TEXT -1 
+33 "Simmetrie e quantita' conservate\n" }{TEXT 257 9 "Temporale" }
+{TEXT -1 1 "\n" }{MPLTEXT 1 0 85 "xi_t:=create([1],array([1,0,0,0])):
+\nepsilon:=prod(u,prod(xi_t,metrica,[1,1]),[1,1]);\n" }{TEXT 258 9 "An
+golare\n" }{MPLTEXT 1 0 82 "xi_phi:=create([1],array([0,0,0,1])):\nL:=
+prod(u,prod(xi_phi,metrica,[1,1]),[1,1]);" }}}{EXCHG {PARA 0 "" 0 "" 
+{TEXT -1 16 "Superpotenziali\n" }{MPLTEXT 1 0 525 "costante:=create([]
+,sqrt(-1*detg)/(2*k)):\nXIT:=create([1],array([1,0,0,0])):\nSuperpoten
+zialeT:=prod(raise(metrica_inversa,cov_diff(XIT,coord,Christo2),2),cos
+tante):\nXIP:=create([1],array([0,0,0,1])):\nSuperpotenzialeP:=prod(ra
+ise(metrica_inversa,cov_diff(XIP,coord,Christo2),2),costante):\n#act(d
+isplay,SuperpotenzialeT):\n#act(display,SuperpotenzialeP):\n\ncombine(
+get_compts(SuperpotenzialeT)[2,1]);\n\nUT:=unapply(get_compts(Superpot
+enzialeT)[2,1],r,theta):\n\ncombine(UT);\nMassa=int(int(UT(r,theta),th
+eta=-1*Pi..Pi),phi=0..2*Pi);\n" }}}{EXCHG {PARA 0 "> " 0 "" {MPLTEXT 
+1 0 111 "G11:=get_compts(G)[1,1]:\nboh=subs(sin(theta)^2=1-cos(theta)^
+2,G11);\nsimplify(coeff(factors(G11)[2,3][1],r^2)):\n" }}}{EXCHG 
+{PARA 0 "> " 0 "" {MPLTEXT 1 0 0 "" }}}{EXCHG {PARA 0 "> " 0 "" 
+{MPLTEXT 1 0 0 "" }}}{EXCHG {PARA 0 "> " 0 "" {MPLTEXT 1 0 0 "" }}}}}
+{MARK "0" 0 }{VIEWOPTS 1 1 0 1 1 1803 1 1 1 1 }{PAGENUMBERS 0 1 2 33 
+1 1 }
