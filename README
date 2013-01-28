@@ -1,0 +1,12 @@
+Questi sono i sorgenti della mia tesi di laurea in fisice intitolata "Entropia e soluzioni
+di collasso gravitazionale".
+
+Per compilarla dovrebbe essere sufficiente eseguire 'make' da
+un terminale.
+
+Questa tesi è disponibile come repository git al seguente indirizzo
+
+    https://github.com/gipi/entropia-e-soluzioni-di-collasso-gravitazionale.git
+
+se qualcuno ritiene di poterne migliorare i contenuti è possibile aprire una
+issue sul sito e provvederemo.
