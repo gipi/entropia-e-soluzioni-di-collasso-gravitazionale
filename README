@@ -2,7 +2,10 @@ Questi sono i sorgenti della mia tesi di laurea in fisice intitolata "Entropia e
 di collasso gravitazionale".
 
 Per compilarla dovrebbe essere sufficiente eseguire 'make' da
-un terminale.
+un terminale. È probabile che necessiti di installare qualche
+dipendenza
+
+ # apt-get install texlive-fonts-recommended
 
 Questa tesi è disponibile come repository git al seguente indirizzo
 
